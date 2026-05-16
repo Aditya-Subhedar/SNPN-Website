@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Society of Neuropeptides and Neuroendocrinology (SNPN)</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <div class="hero-splitscreen">
+        
+        <div class="hero-content hero-left">
+            <div class="founder-info-hero">
+                <img src="/images/founder.jpg" alt="Prof. Nishikant Subhedar" class="founder-hero-img">
+                <h1 class="hero-title">Welcome</h1>
+                <p class="hero-description">The Society of Neuropeptides and Neuroendocrinology (SNPN) welcomes you to explore contemporary research and foster connections in this vital scientific field. Led by Prof. Nishikant Subhedar, our founding president, we aim to advance Neuropeptides research and field of Neuroendocrinology in India.</p>
+                <a href="/about" class="hero-button">Read more about SNPN</a>
+            </div>
+        </div>
+
+        <div class="hero-content hero-right">
+            <div class="map-container">
+                <h2 class="map-heading">Advancing Neuroendocrinology in India</h2>
+                <img src="/images/india_map_stylized.png" alt="Map of India" class="hero-map-img">
+            </div>
+        </div>
+        
+    </div> <div class="overlaid-cards-section">
+        <div class="overlaid-cards-container">
+            
+            <div class="feature-card">
+                <div class="card-icon"><i class="fas fa-users"></i></div>
+                <h3 class="card-title">EXECUTIVE COUNCIL</h3>
+                <p class="card-description">Meet our dedicated leadership team, guiding the society's scientific and strategic goals.</p>
+                <a href="/council" class="card-button">Learn more</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="card-icon"><i class="fas fa-user-plus"></i></div>
+                <h3 class="card-title">SOCIETY MEMBERSHIP</h3>
+                <p class="card-description">Join our global network of experts and emerging scientists. Benefits include discounts, networking, and early access.</p>
+                <a href="/membership" class="card-button">Learn more</a>
+            </div>
+
+            <div class="feature-card upcoming-events-card">
+                <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
+                <h3 class="card-title">UPCOMING EVENTS</h3>
+                
+                <div class="upcoming-events-list">
+                    <% if (events && events.length > 0) { %>
+                        <% events.forEach(event => { %>
+                            <div class="event-item">
+                                <h4 class="event-title"><%= event.title %></h4>
+                                <p class="event-date"><%= event.date %></p>
+                            </div>
+                        <% }); %>
+                    <% } else { %>
+                        <p class="no-events">No upcoming events listed.</p>
+                    <% } %>
+                </div>
+                
+                <a href="/workshops" class="card-button">Learn more</a>
+            </div>
+
+        </div> </div> <div class="brief-message-section">
+        <div class="brief-message-content">
+            <h3>A Legacy of Leadership</h3>
+            <p>The groundwork for SNPN was laid by the profound dedication of our leadership, starting with our Founding President, Prof. Amul Sakharkar, and continuing through to our Executive-Presidents like Prof. Iqbal Parvez (2019-2021). Explore our full history.</p>
+            <p><a href="/history">Read our Full Legacy (History)</a></p>
+        </div>
+    </div> <%- include('partials/footer') %>
+</body>
+</html>

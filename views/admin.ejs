@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SNPN Admin Dashboard</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="title-bar" style="background-color: #e74c3c; border-color: #c0392b;">
+        SNPN Secure Admin Dashboard
+        <a href="/" style="float: right; color: white; font-size: 14px; text-decoration: none;">&larr; Back to Site</a>
+    </div>
+
+    <div class="admin-container">
+        <h2>Manage Upcoming Events</h2>
+        <hr style="margin: 15px 0;">
+
+        <form class="admin-form" action="/admin/add-event" method="POST">
+            <input type="text" name="title" placeholder="Event Title (e.g., Annual Conference)" required>
+            <input type="text" name="date" placeholder="Event Date (e.g., Dec 12, 2026)" required>
+            <button type="submit">Add New Event</button>
+        </form>
+
+        <h3 style="margin-top: 30px;">Current Events List</h3>
+        <ul style="margin-top: 15px; list-style: none;">
+            <% events.forEach(event => { %>
+                <li style="background: #f1f1f1; padding: 10px; margin-bottom: 10px; display: flex; justify-content: space-between;">
+                    <span><strong><%= event.title %></strong> (<%= event.date %>)</span>
+                    <form action="/admin/delete-event/<%= event.id %>" method="POST" style="display:inline;">
+                        <button type="submit" style="background: #e74c3c; width: auto; padding: 5px 10px;">Delete</button>
+                    </form>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</body>
+</html>
