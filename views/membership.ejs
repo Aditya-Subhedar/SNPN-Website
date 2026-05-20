@@ -2,18 +2,291 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Society Membership - SNPN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership | SNPN</title>
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* Shared page header style */
+        .page-header {
+            background-color: var(--primary-blue);
+            color: var(--text-white);
+            padding: 60px 10%;
+            text-align: center;
+            box-shadow: inset 0 -10px 20px rgba(0,0,0,0.1);
+        }
+        .page-header h1 {
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .page-header p {
+            color: var(--accent-blue);
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .membership-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 5%;
+        }
+
+        .section-title {
+            color: var(--primary-blue);
+            font-size: 28px;
+            border-bottom: 3px solid var(--accent-blue);
+            padding-bottom: 10px;
+            margin-bottom: 40px;
+            display: inline-block;
+        }
+
+        /* --- Benefits Grid --- */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .benefit-card {
+            background-color: var(--bg-white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(0,0,0,0.02);
+            text-align: center;
+        }
+
+        .benefit-icon {
+            font-size: 36px;
+            color: var(--accent-blue);
+            margin-bottom: 15px;
+        }
+
+        .benefit-card h3 {
+            color: var(--text-dark);
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .benefit-card p {
+            color: var(--text-gray);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* --- Tiers/Pricing Cards --- */
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: stretch;
+        }
+
+        .tier-card {
+            background-color: var(--bg-white);
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .tier-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Highlight feature for Life Membership */
+        .tier-card.featured {
+            border: 2px solid var(--accent-blue);
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent-blue);
+            color: var(--text-white);
+            padding: 4px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 20px;
+        }
+
+        .tier-name {
+            font-size: 22px;
+            color: var(--primary-blue);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .tier-price {
+            font-size: 36px;
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .tier-price span {
+            font-size: 14px;
+            color: var(--text-gray);
+            font-weight: 400;
+        }
+
+        .tier-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 35px;
+        }
+
+        .tier-features li {
+            font-size: 15px;
+            color: var(--text-gray);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tier-features li i {
+            color: #2ed573; /* Green checkmark */
+        }
+
+        /* --- Instructions / Bank Details Card --- */
+        .instructions-card {
+            background-color: var(--bg-white);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .instructions-card h3 {
+            color: var(--primary-blue);
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .instructions-list {
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+
+        .instructions-list li {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--text-gray);
+            margin-bottom: 10px;
+        }
+
+        .bank-details {
+            background-color: var(--bg-light);
+            border-left: 4px solid var(--accent-blue);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            font-family: monospace;
+            font-size: 14px;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
     <%- include('partials/header') %>
-    <div class="container">
-        <div class="main-content" style="width: 100%;">
-            <h2>Society Membership</h2>
-            <hr>
-            <p>Join our global network of researchers and professionals. Membership benefits include discounted conference registrations, access to our exclusive newsletter, and networking opportunities.</p>
-            <p><em>Membership forms and payment portals will be available here soon.</em></p>
-        </div>
+
+    <div class="page-header">
+        <h1>SNPN Membership</h1>
+        <p>Join a community committed to advancing neuroscience research</p>
     </div>
+
+    <div class="membership-container">
+        
+        <h2 class="section-title">Why Join Us?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <i class="fa-solid fa-network-wired benefit-icon"></i>
+                <h3>Scientific Network</h3>
+                <p>Connect with top neuroendocrinologists, researchers, and peers across the nation.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fa-solid fa-gavel benefit-icon"></i>
+                <h3>Conference Discounts</h3>
+                <p>Enjoy reduced registration fees for all annual meetings, workshops, and symposiums.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fa-solid fa-graduation-cap benefit-icon"></i>
+                <h3>Grants & Awards</h3>
+                <p>Gain exclusive eligibility to apply for research fellowships and travel grants.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Membership Categories</h2>
+        <div class="tiers-grid">
+            
+            <div class="tier-card">
+                <h3 class="tier-name">Student Member</h3>
+                <div class="tier-price">₹[Amt] <span>/ Annual</span></div>
+                <ul class="tier-features">
+                    <li><i class="fa-solid fa-circle-check"></i> Access to digital newsletter</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Discounted conference entry</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Poster presentation eligibility</li>
+                </ul>
+            </div>
+
+            <div class="tier-card featured">
+                <span class="badge">Recommended</span>
+                <h3 class="tier-name">Life Member</h3>
+                <div class="tier-price">₹[Amt] <span>/ One-time</span></div>
+                <ul class="tier-features">
+                    <li><i class="fa-solid fa-circle-check"></i> Lifetime membership privileges</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Voting rights in general body</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Eligible for executive council</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Priority entry & maximum discounts</li>
+                </ul>
+            </div>
+
+            <div class="tier-card">
+                <h3 class="tier-name">Ordinary Member</h3>
+                <div class="tier-price">₹[Amt] <span>/ Annual</span></div>
+                <ul class="tier-features">
+                    <li><i class="fa-solid fa-circle-check"></i> Standard membership benefits</li>
+                    <li><i class="fa-solid fa-circle-check"></i> General body access</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Regular processing discounts</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <h2 class="section-title">How to Apply</h2>
+        <div class="instructions-card">
+            <h3>Registration Process</h3>
+            <ol class="instructions-list">
+                <li>Choose your desired membership tier from the options listed above.</li>
+                <li>Transfer the corresponding fee using online banking (NEFT/RTGS/IMPS) to the official account listed below.</li>
+                <li>Take a screenshot or save the receipt/transaction ID of your successful payment.</li>
+                <li>Email your details along with your CV and payment proof to <strong>membership@snpn.org</strong> (or submit via the application form if active).</li>
+            </ol>
+
+            <div class="bank-details">
+                <strong>Account Name:</strong> Society of Neuropeptides and Neuroendocrinology<br>
+                <strong>Bank Name:</strong> [Bank Name]<br>
+                <strong>Account Number:</strong> XXXXXXXXXXXX<br>
+                <strong>IFSC Code:</strong> XXXXXXXXXXX<br>
+                <strong>Branch:</strong> [Branch Name, City]
+            </div>
+        </div>
+
+    </div>
+
+    <%- include('partials/footer') %>
 </body>
 </html>

@@ -28,18 +28,18 @@ app.get('/', (req, res) => {
     res.render('index', { events: upcomingEvents });
 });
 
-// Assuming these other files exist as placeholders or point to standard pages
-app.get('/about', (req, res) => res.render('gallery')); 
-app.get('/council', (req, res) => res.render('gallery'));
-app.get('/membership', (req, res) => res.render('gallery'));
-app.get('/newsletter', (req, res) => res.render('gallery'));
-app.get('/awards', (req, res) => res.render('gallery'));
+app.get('/about', (req, res) => res.render('about')); 
+app.get('/council', (req, res) => res.render('council')); // Typo fixed
+app.get('/membership', (req, res) => res.render('membership')); // Typo fixed
 app.get('/gallery', (req, res) => res.render('gallery'));
-app.get('/contact', (req, res) => res.render('gallery'));
-app.get('/workshops', (req, res) => res.render('workshop')); 
+app.get('/workshops', (req, res) => res.render('workshops')); // Typo fixed
 
-// Placeholders for legacy history if activated
-app.get('/history', (req, res) => res.render('gallery'));
+// Note: Ensure you actually have these .ejs files created in your views folder!
+// If you don't have them yet, you will get a "Failed to lookup view" error.
+app.get('/newsletter', (req, res) => res.render('newsletter'));
+app.get('/awards', (req, res) => res.render('awards'));
+app.get('/contact', (req, res) => res.render('contact'));
+app.get('/history', (req, res) => res.render('history'));
 
 
 // --- ADMIN ROUTES (CRUD Operations maintained) ---

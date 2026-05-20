@@ -12,13 +12,43 @@
     <div class="hero-splitscreen">
         
         <div class="hero-content hero-left">
-            <div class="founder-info-hero">
-                <img src="/images/founder.jpg" alt="Prof. Nishikant Subhedar" class="founder-hero-img">
-                <h1 class="hero-title">Welcome</h1>
-                <p class="hero-description">The Society of Neuropeptides and Neuroendocrinology (SNPN) welcomes you to explore contemporary research and foster connections in this vital scientific field. Led by Prof. Nishikant Subhedar, our founding president, we aim to advance Neuropeptides research and field of Neuroendocrinology in India.</p>
-                <a href="/about" class="hero-button">Read more about SNPN</a>
-            </div>
+    <div class="hero-welcome-container">
+        <div class="slideshow-frame">
+            <img src="/images/Slideshow/ss1.png" class="slide active">
+            <img src="/images/Slideshow/ss2.png" class="slide">
+            <img src="/images/Slideshow/ss3.png" class="slide">
+            <img src="/images/Slideshow/ss4.png" class="slide">
+            <img src="/images/Slideshow/ss5.png" class="slide">
+            <img src="/images/Slideshow/ss6.png" class="slide">
+            <img src="/images/Slideshow/ss7.png" class="slide">
+            <img src="/images/Slideshow/ss8.png" class="slide">
+            <img src="/images/Slideshow/ss9.png" class="slide">
+            <img src="/images/Slideshow/ss10.png" class="slide">
         </div>
+
+        <h1 class="hero-title">Welcome</h1>
+        <p class="hero-description">
+            The Society of Neuropeptides and Neuroendocrinology (SNPN) welcomes you to explore 
+            contemporary research and foster connections in this vital scientific field. 
+            We aim to advance research in India through collaboration and excellence.
+        </p>
+        <a href="/about" class="hero-button">Read more about SNPN</a>
+    </div>
+</div>
+
+<script>
+    // Tiny script to handle the slideshow rotation
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    
+    function showNextSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+    
+    setInterval(showNextSlide, 4000); // Changes image every 4 seconds
+</script>
 
         <div class="hero-content hero-right">
             <div class="map-container">
@@ -27,7 +57,9 @@
             </div>
         </div>
         
-    </div> <div class="overlaid-cards-section">
+    </div> 
+
+    <div class="overlaid-cards-section">
         <div class="overlaid-cards-container">
             
             <div class="feature-card">
@@ -64,12 +96,10 @@
                 <a href="/workshops" class="card-button">Learn more</a>
             </div>
 
-        </div> </div> <div class="brief-message-section">
-        <div class="brief-message-content">
-            <h3>A Legacy of Leadership</h3>
-            <p>The groundwork for SNPN was laid by the profound dedication of our leadership, starting with our Founding President, Prof. Amul Sakharkar, and continuing through to our Executive-Presidents like Prof. Iqbal Parvez (2019-2021). Explore our full history.</p>
-            <p><a href="/history">Read our Full Legacy (History)</a></p>
-        </div>
-    </div> <%- include('partials/footer') %>
+        </div> 
+    </div> 
+
+
+    <%- include('partials/footer') %>
 </body>
 </html>
