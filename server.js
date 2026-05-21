@@ -17,8 +17,8 @@ let upcomingEvents = [
     },
     { 
         id: 2, 
-        title: "Symposium on Neuroendocrine Signaling", 
-        date: "Sept 10-12, 2027" 
+        title: "Annual Meeting and International Conference-Cum-Workshop", 
+        date: "Jan 14-17, 2027" 
     }
 ];
 

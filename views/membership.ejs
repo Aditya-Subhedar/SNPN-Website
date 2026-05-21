@@ -208,6 +208,49 @@
         <p>Join a community committed to advancing neuroscience research</p>
     </div>
 
+<style>
+        /* Specific styles for the plan buttons and alert box */
+        .plan-btn {
+            margin-top: auto; /* Pushes button to the bottom of the card */
+            padding: 12px 20px;
+            background-color: transparent;
+            color: var(--accent-blue);
+            border: 2px solid var(--accent-blue);
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .plan-btn:hover {
+            background-color: var(--accent-blue);
+            color: var(--text-white);
+        }
+
+        .plan-btn.selected {
+            background-color: var(--primary-blue);
+            color: var(--text-white);
+            border-color: var(--primary-blue);
+        }
+
+        .selected-plan-alert {
+            background-color: #e6f7ff;
+            border-left: 4px solid var(--accent-blue);
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+            font-size: 16px;
+            color: var(--primary-blue);
+        }
+
+        .selected-plan-alert span {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+    </style>
+
     <div class="membership-container">
         
         <h2 class="section-title">Why Join Us?</h2>
@@ -231,62 +274,105 @@
 
         <h2 class="section-title">Membership Categories</h2>
         <div class="tiers-grid">
-            
-            <div class="tier-card">
-                <h3 class="tier-name">Student Member</h3>
-                <div class="tier-price">₹[Amt] <span>/ Annual</span></div>
-                <ul class="tier-features">
-                    <li><i class="fa-solid fa-circle-check"></i> Access to digital newsletter</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Discounted conference entry</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Poster presentation eligibility</li>
-                </ul>
-            </div>
 
             <div class="tier-card featured">
                 <span class="badge">Recommended</span>
-                <h3 class="tier-name">Life Member</h3>
-                <div class="tier-price">₹[Amt] <span>/ One-time</span></div>
+                <h3 class="tier-name">Lifetime Member</h3>
+                <div class="tier-price">₹5000 <span>/ One-time</span></div>
                 <ul class="tier-features">
                     <li><i class="fa-solid fa-circle-check"></i> Lifetime membership privileges</li>
                     <li><i class="fa-solid fa-circle-check"></i> Voting rights in general body</li>
                     <li><i class="fa-solid fa-circle-check"></i> Eligible for executive council</li>
                     <li><i class="fa-solid fa-circle-check"></i> Priority entry & maximum discounts</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Applicable for academic and scientific personnel only</li>
                 </ul>
+                <button class="plan-btn" onclick="selectPlan(this, 'Lifetime Member', '₹5000 (One-time)')">Select Plan</button>
             </div>
-
+            
             <div class="tier-card">
-                <h3 class="tier-name">Ordinary Member</h3>
-                <div class="tier-price">₹[Amt] <span>/ Annual</span></div>
+                <h3 class="tier-name">Annual Member</h3>
+                <div class="tier-price">₹2000 <span>/ Annum</span></div>
                 <ul class="tier-features">
                     <li><i class="fa-solid fa-circle-check"></i> Standard membership benefits</li>
                     <li><i class="fa-solid fa-circle-check"></i> General body access</li>
                     <li><i class="fa-solid fa-circle-check"></i> Regular processing discounts</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Applicable for students & post-docs</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Applicable for early career, faculty, & scientists</li>
                 </ul>
+                <button class="plan-btn" onclick="selectPlan(this, 'Annual Member', '₹2000 (Per Annum)')">Select Plan</button>
+            </div>
+
+            <div class="tier-card">
+                <h3 class="tier-name">Industry Member</h3>
+                <div class="tier-price">₹5000 <span>/ Annum</span></div>
+                <ul class="tier-features">
+                    <li><i class="fa-solid fa-circle-check"></i> Access to digital newsletter</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Free scientific updates</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Discounted conference entry</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Poster presentation eligibility</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Discounted stall rates at conferences</li>
+                </ul>
+                <button class="plan-btn" onclick="selectPlan(this, 'Industry Member', '₹5000 (Per Annum)')">Select Plan</button>
             </div>
 
         </div>
 
         <h2 class="section-title">How to Apply</h2>
-        <div class="instructions-card">
+        <div id="payment-section" class="instructions-card">
             <h3>Registration Process</h3>
+            
+            <div class="selected-plan-alert" id="plan-alert" style="display: none;">
+                Currently Selected Plan: <span id="display-plan-name">None</span> - <span id="display-plan-price"></span>
+            </div>
+
             <ol class="instructions-list">
                 <li>Choose your desired membership tier from the options listed above.</li>
-                <li>Transfer the corresponding fee using online banking (NEFT/RTGS/IMPS) to the official account listed below.</li>
-                <li>Take a screenshot or save the receipt/transaction ID of your successful payment.</li>
+                <li>Transfer the corresponding fee using online banking (NEFT/RTGS/IMPS) or via <strong>Demand Draft (DD)</strong> to the official account listed below.</li>
+                <li>Take a screenshot or save the receipt/transaction ID (or DD number) of your successful payment.</li>
                 <li>Email your details along with your CV and payment proof to <strong>membership@snpn.org</strong> (or submit via the application form if active).</li>
             </ol>
 
             <div class="bank-details">
-                <strong>Account Name:</strong> Society of Neuropeptides and Neuroendocrinology<br>
+                <strong>Account Name:</strong> Society for Neuropeptides and Neuroendocrinology<br>
                 <strong>Bank Name:</strong> [Bank Name]<br>
                 <strong>Account Number:</strong> XXXXXXXXXXXX<br>
                 <strong>IFSC Code:</strong> XXXXXXXXXXX<br>
-                <strong>Branch:</strong> [Branch Name, City]
+                <strong>Branch:</strong> [Branch Name, City]<br>
+                <br>
+                <em>* If paying by Demand Draft, please draw it in favor of "Society for Neuropeptides and Neuroendocrinology" payable at [City].</em>
             </div>
         </div>
 
     </div>
 
     <%- include('partials/footer') %>
+
+    <script>
+        function selectPlan(buttonElement, planName, planPrice) {
+            // 1. Reset all buttons back to default state
+            const allButtons = document.querySelectorAll('.plan-btn');
+            allButtons.forEach(btn => {
+                btn.classList.remove('selected');
+                btn.innerText = 'Select Plan';
+            });
+
+            // 2. Highlight the clicked button
+            buttonElement.classList.add('selected');
+            buttonElement.innerText = '✓ Selected';
+
+            // 3. Update the text in the payment section
+            document.getElementById('display-plan-name').innerText = planName;
+            document.getElementById('display-plan-price').innerText = planPrice;
+            
+            // 4. Reveal the alert box if it was hidden
+            document.getElementById('plan-alert').style.display = 'block';
+
+            // 5. Smoothly scroll down to the payment section
+            document.getElementById('payment-section').scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center' 
+            });
+        }
+    </script>
 </body>
 </html>
