@@ -9,12 +9,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true })); 
 
 // --- MOCK DATABASE ---
+// (I kept this here just in case your index.ejs relies on this data to load the homepage)
 let upcomingEvents = [
-    { 
-        id: 1, 
-        title: "International Conference on Neuropeptides", 
-        date: "Nov 14-16, 2026" 
-    },
     { 
         id: 2, 
         title: "Annual Meeting and International Conference-Cum-Workshop", 
@@ -29,40 +25,19 @@ app.get('/', (req, res) => {
 });
 
 app.get('/about', (req, res) => res.render('about')); 
-app.get('/council', (req, res) => res.render('council')); // Typo fixed
-app.get('/membership', (req, res) => res.render('membership')); // Typo fixed
+app.get('/council', (req, res) => res.render('council')); 
+app.get('/membership', (req, res) => res.render('membership')); 
 app.get('/gallery', (req, res) => res.render('gallery'));
-app.get('/workshops', (req, res) => res.render('workshops')); // Typo fixed
-
-// Note: Ensure you actually have these .ejs files created in your views folder!
-// If you don't have them yet, you will get a "Failed to lookup view" error.
+app.get('/workshops', (req, res) => res.render('workshops')); 
 app.get('/newsletter', (req, res) => res.render('newsletter'));
 app.get('/awards', (req, res) => res.render('awards'));
+app.get('/events', (req, res) => res.render('events'));
 app.get('/contact', (req, res) => res.render('contact'));
 app.get('/history', (req, res) => res.render('history'));
 
+// ---> YOUR NEWLY ADDED EVENTS ROUTE <---
+app.get('/events', (req, res) => res.render('events'));
 
-// --- ADMIN ROUTES (CRUD Operations maintained) ---
-
-app.get('/admin', (req, res) => {
-    res.render('admin', { events: upcomingEvents });
-});
-
-app.post('/admin/add-event', (req, res) => {
-    const newEvent = { 
-        id: Date.now(), 
-        title: req.body.title, 
-        date: req.body.date 
-    };
-    upcomingEvents.push(newEvent);
-    res.redirect('/admin');
-});
-
-app.post('/admin/delete-event/:id', (req, res) => {
-    const eventId = parseInt(req.params.id);
-    upcomingEvents = upcomingEvents.filter(event => event.id !== eventId);
-    res.redirect('/admin');
-});
 
 // Start Server
 const PORT = 3000;

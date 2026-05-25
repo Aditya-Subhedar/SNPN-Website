@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awards & Honors | SNPN</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- Awards Specific Styles --- */
+        
+        /* Hero Banner */
+        .awards-hero {
+            background: linear-gradient(135deg, var(--primary-blue, #0A2F5D) 0%, #061e3e 100%);
+            color: #ffffff;
+            padding: 80px 8%;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-blue, #5bc0de);
+        }
+
+        .awards-hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .awards-hero p {
+            font-size: 18px;
+            color: #cbd5e1;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Awards Display Grid */
+        .awards-section {
+            padding: 60px 8% 80px;
+            background-color: var(--bg-light, #f8fafc);
+        }
+
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Award Cards */
+        .award-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .award-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(10, 47, 93, 0.1);
+            border-color: rgba(91, 192, 222, 0.4);
+        }
+
+        .award-icon-container {
+            width: 60px;
+            height: 60px;
+            background: #e0f2fe;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .award-icon-container i {
+            font-size: 28px;
+            color: var(--primary-blue, #0A2F5D);
+        }
+
+        .award-card h3 {
+            font-size: 22px;
+            color: var(--primary-blue, #0A2F5D);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .award-description {
+            color: var(--text-gray, #64748b);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .award-details-list {
+            list-style: none;
+            padding: 0;
+            margin: 0  25px;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 15px;
+        }
+
+        .award-details-list li {
+            font-size: 13.5px;
+            color: var(--text-dark, #334155);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .award-details-list li i {
+            color: var(--accent-blue, #5bc0de);
+            margin-top: 3px;
+        }
+
+        .award-action-btn {
+            margin-top: auto;
+            padding: 12px 20px;
+            background-color: transparent;
+            color: var(--primary-blue, #0A2F5D);
+            border: 2px solid var(--primary-blue, #0A2F5D);
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .award-action-btn:hover {
+            background-color: var(--primary-blue, #0A2F5D);
+            color: #ffffff;
+        }
+
+        /* --- Guidelines Modal Layout --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 47, 93, 0.8);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px; right: 25px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #64748b;
+        }
+
+        .close-modal:hover { color: #dc2626; }
+
+        .modal-title {
+            color: var(--primary-blue, #0A2F5D);
+            margin-bottom: 20px;
+            font-size: 22px;
+            border-bottom: 2px solid var(--accent-blue, #5bc0de);
+            padding-bottom: 10px;
+        }
+
+        .guideline-section {
+            margin-bottom: 15px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #334155;
+        }
+
+        .guideline-section strong {
+            color: var(--primary-blue, #0A2F5D);
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <%- include('partials/header') %>
+
+    <section class="awards-hero">
+        <h1>Society Awards & Honors</h1>
+        <p>Recognizing outstanding scientific achievements, exceptional research contributions, and dedicated leadership within the neuroendocrinology community of India.</p>
+    </section>
+
+    <section class="awards-section">
+        <div class="awards-grid">
+            
+            <div class="award-card">
+                <div class="award-icon-container">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+                <h3>Distinguished Scientist Award</h3>
+                <p class="award-description">The highest honor bestowed by SNPN, celebrating lifetime excellence and foundational research breakthroughs in neuropeptide dynamics.</p>
+                <ul class="award-details-list">
+                    <li><i class="fa-solid fa-user-graduate"></i> <strong>Eligibility:</strong> Lifetime Members (Faculty / Senior Scientists)</li>
+                    <li><i class="fa-solid fa-award"></i> <strong>Includes:</strong> Gold Medal, Citation Scroll, and ₹25,000 Honorarium</li>
+                    <li><i class="fa-solid fa-calendar-days"></i> <strong>Cycle:</strong> Awarded Biennially</li>
+                </ul>
+                <button class="award-action-btn" onclick="openGuidelines('Distinguished Scientist Award', 'Applicants must have a minimum of 15 years of continuous post-PhD research track records in neuroendocrinology. Nominations must include a comprehensive CV, a summary of top 5 high-impact publications, and two letters of recommendation from existing executive council members. Submit dossier directly to awards@snpn.org.')">View Guidelines</button>
+            </div>
+
+            <div class="award-card">
+                <div class="award-icon-container">
+                    <i class="fa-solid fa-medal"></i>
+                </div>
+                <h3>Young Investigator Award</h3>
+                <p class="award-description">Designed to encourage early-career scientists demonstrating exceptional innovation and independent research direction within the discipline.</p>
+                <ul class="award-details-list">
+                    <li><i class="fa-solid fa-user-graduate"></i> <strong>Eligibility:</strong> Post-docs & Faculty under 35 years of age</li>
+                    <li><i class="fa-solid fa-award"></i> <strong>Includes:</strong> Silver Medal, Plaque, and ₹15,000 Cash Prize</li>
+                    <li><i class="fa-solid fa-calendar-days"></i> <strong>Cycle:</strong> Awarded Annually</li>
+                </ul>
+                <button class="award-action-btn" onclick="openGuidelines('Young Investigator Award', 'Open to active SNPN Annual or Lifetime members under 35 years of age. Candidates must present their original work during the plenary session of the Annual Meeting. Selection is managed by a designated jury panel judging technical innovation, experimental design, and live defense performance.')">View Guidelines</button>
+            </div>
+
+            <div class="award-card">
+                <div class="award-icon-container">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <h3>Best Poster Presentation</h3>
+                <p class="award-description">Recognizing high-quality scientific graphic communication and presentation excellence during the annual conference scientific poster floor session.</p>
+                <ul class="award-details-list">
+                    <li><i class="fa-solid fa-user-graduate"></i> <strong>Eligibility:</strong> Master/PhD Students currently enrolled</li>
+                    <li><i class="fa-solid fa-award"></i> <strong>Includes:</strong> Certificate of Merit and Cash Award of ₹5,000</li>
+                    <li><i class="fa-solid fa-calendar-days"></i> <strong>Cycle:</strong> 3 Awards given per Annual Meeting</li>
+                </ul>
+                <button class="award-action-btn" onclick="openGuidelines('Best Poster Presentation', 'Automatically open to all student members with accepted abstracts for the upcoming conference poster gallery session. Posters will be evaluated on visual structure clarity, scientific rigor, and the researcher\'s competence during on-site interactive reviews by the evaluation board.')">View Guidelines</button>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="modal-overlay" id="guidelines-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeGuidelinesModal()">&times;</span>
+            <h3 class="modal-title" id="modal-award-title">Award Guidelines</h3>
+            
+            <div class="guideline-section">
+                <strong>Nomination & Submission Details:</strong>
+                <p id="modal-award-text"></p>
+            </div>
+            
+            <div class="guideline-section" style="background-color: #f8fafc; padding: 15px; border-radius: 6px; border-left: 3px solid var(--accent-blue, #5bc0de);">
+                <strong>Important Note:</strong>
+                All candidates must maintain active society memberships in good standing at the time of submission processing.
+            </div>
+        </div>
+    </div>
+
+    <%- include('partials/footer') %>
+
+    <script>
+        function openGuidelines(awardName, guidelinesText) {
+            document.getElementById('modal-award-title').innerText = awardName + ' - Rules';
+            document.getElementById('modal-award-text').innerText = guidelinesText;
+            document.getElementById('guidelines-modal').style.display = 'flex';
+        }
+
+        function closeGuidelinesModal() {
+            document.getElementById('guidelines-modal').style.display = 'none';
+        }
+
+        // Close modal automatically if user clicks on background overlay mesh
+        window.onclick = function(event) {
+            const modal = document.getElementById('guidelines-modal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -2,20 +2,207 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Gallery - SNPN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | SNPN</title>
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- Gallery Specific Styles --- */
+        
+        /* Hero Banner (Matches Newsletter & Theme) */
+        .gallery-hero {
+            background: linear-gradient(135deg, var(--primary-blue, #0A2F5D) 0%, #061e3e 100%);
+            color: #ffffff;
+            padding: 80px 8%;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-blue, #5bc0de);
+        }
+
+        .gallery-hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .gallery-hero p {
+            font-size: 18px;
+            color: #cbd5e1;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Gallery Grid Section */
+        .gallery-section {
+            padding: 60px 8% 80px;
+            background-color: var(--bg-light, #f8fafc);
+            min-height: 60vh;
+        }
+
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background: transparent;
+            border: 2px solid var(--primary-blue, #0A2F5D);
+            color: var(--primary-blue, #0A2F5D);
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary-blue, #0A2F5D);
+            color: #ffffff;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Individual Image Cards */
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            background: #ffffff;
+            cursor: pointer;
+            /* Ensures smooth rendering during the scale animation */
+            transform: translateZ(0); 
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover; /* Keeps aspect ratio clean without stretching */
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        /* Hover Zoom Effect */
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Slide-up Caption Overlay */
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 47, 93, 0.9); /* Dark blue with slight transparency */
+            backdrop-filter: blur(4px);
+            color: #ffffff;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .gallery-caption h4 {
+            margin: 0 0 5px 0;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--accent-blue, #5bc0de);
+        }
+
+        .gallery-caption p {
+            margin: 0;
+            font-size: 13px;
+            color: #e2e8f0;
+            line-height: 1.4;
+        }
+    </style>
 </head>
 <body>
 
     <%- include('partials/header') %>
 
-    <div class="container">
-        <div class="main-content" style="width: 100%;">
-            <h2>Photo Gallery</h2>
-            <hr style="margin: 15px 0;">
-            <p>Photos from our recent conferences and society meetups will be displayed here.</p>
+    <section class="gallery-hero">
+        <h1>Event Gallery</h1>
+        <p>Explore moments from our past symposiums, workshops, and national neuroendocrinology networking events.</p>
+    </section>
+
+    <section class="gallery-section">
+        
+        <div class="gallery-filters">
+            <button class="filter-btn active">All Events</button>
+            <button class="filter-btn">Annual Conferences</button>
+            <button class="filter-btn">Workshops</button>
+            <button class="filter-btn">Awards</button>
+        </div>
+
+        <div class="gallery-grid">
+            
+            <div class="gallery-item">
+                <img src="https://placehold.co/600x400/e2e8f0/0A2F5D?text=Annual+Meeting+2025" alt="Annual Meeting 2025">
+                <div class="gallery-caption">
+                    <h4>National Conference 2025</h4>
+                    <p>Keynote speakers addressing the general body regarding neuropeptide advancements.</p>
+                </div>
             </div>
-    </div>
+
+            <div class="gallery-item">
+                <img src="https://placehold.co/600x400/e2e8f0/0A2F5D?text=Poster+Presentation" alt="Poster Presentation">
+                <div class="gallery-caption">
+                    <h4>Student Poster Presentations</h4>
+                    <p>Early career researchers showcasing their latest lab findings.</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://placehold.co/600x400/e2e8f0/0A2F5D?text=Executive+Council" alt="Executive Council">
+                <div class="gallery-caption">
+                    <h4>Executive Council Meeting</h4>
+                    <p>Planning committee finalizing the grants and awards for the upcoming academic year.</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://placehold.co/600x400/e2e8f0/0A2F5D?text=Lab+Workshop" alt="Lab Workshop">
+                <div class="gallery-caption">
+                    <h4>Advanced Techniques Workshop</h4>
+                    <p>Hands-on training session for industry professionals and post-docs.</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://placehold.co/600x400/e2e8f0/0A2F5D?text=Award+Ceremony" alt="Award Ceremony">
+                <div class="gallery-caption">
+                    <h4>Excellence in Research Awards</h4>
+                    <p>Honoring the lifetime achievements of our founding members.</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://placehold.co/600x400/e2e8f0/0A2F5D?text=Networking+Dinner" alt="Networking Dinner">
+                <div class="gallery-caption">
+                    <h4>Gala & Networking Dinner</h4>
+                    <p>Fostering connections between academia and industry leaders.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <%- include('partials/footer') %>
 
 </body>
 </html>

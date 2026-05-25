@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter | SNPN</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- Newsletter Specific Styles --- */
+        
+        /* Hero Banner */
+        .newsletter-hero {
+            background: linear-gradient(135deg, var(--primary-blue, #0A2F5D) 0%, #061e3e 100%);
+            color: #ffffff;
+            padding: 80px 8%;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-blue, #5bc0de);
+        }
+
+        .newsletter-hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .newsletter-hero p {
+            font-size: 18px;
+            color: #cbd5e1;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Subscription Section */
+        .subscribe-section {
+            padding: -50px 8% 60px; /* Negative top padding to pull it up into the banner */
+            display: flex;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+            margin-top: -40px;
+        }
+
+        .subscribe-card {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .subscribe-card h3 {
+            color: var(--primary-blue, #0A2F5D);
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .subscribe-card p {
+            color: var(--text-gray, #64748b);
+            margin-bottom: 30px;
+            font-size: 15px;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .subscribe-form input {
+            flex: 1;
+            min-width: 200px;
+            padding: 14px 20px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 15px;
+            font-family: inherit;
+        }
+
+        .subscribe-form input:focus {
+            outline: none;
+            border-color: var(--accent-blue, #5bc0de);
+            box-shadow: 0 0 0 3px rgba(91, 192, 222, 0.2);
+        }
+
+        .subscribe-btn {
+            padding: 14px 30px;
+            background-color: var(--accent-blue, #5bc0de);
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .subscribe-btn:hover {
+            background-color: #46a8c6;
+            transform: translateY(-2px);
+        }
+
+        .success-message {
+            display: none;
+            background-color: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        /* Archive Grid */
+        .archive-section {
+            padding: 40px 8% 80px;
+            background-color: var(--bg-light, #f8fafc);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            color: var(--primary-blue, #0A2F5D);
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .issue-card {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid transparent;
+        }
+
+        .issue-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-top-color: var(--accent-blue, #5bc0de);
+        }
+
+        .issue-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .issue-tag {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .issue-date {
+            color: #94a3b8;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .issue-card h4 {
+            font-size: 20px;
+            color: var(--primary-blue, #0A2F5D);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .issue-card p {
+            color: var(--text-gray, #64748b);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .read-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-blue, #5bc0de);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: gap 0.3s ease;
+        }
+
+        .read-btn:hover {
+            gap: 12px; /* Smooth arrow slide effect */
+            color: var(--primary-blue, #0A2F5D);
+        }
+    </style>
+</head>
+<body>
+
+    <%- include('partials/header') %>
+
+    <section class="newsletter-hero">
+        <h1>SNPN Quarterly Newsletter</h1>
+        <p>Stay informed with the latest breakthroughs in neuroendocrinology, society announcements, grant opportunities, and upcoming national conferences.</p>
+    </section>
+
+    <section class="subscribe-section">
+        <div class="subscribe-card">
+            <h3>Subscribe to Our Mailing List</h3>
+            <p>Join our digital network. We promise to only send you high-quality scientific updates.</p>
+            
+            <form id="newsletter-form" class="subscribe-form">
+                <input type="text" id="sub-name" placeholder="Full Name" required>
+                <input type="email" id="sub-email" placeholder="Email Address" required>
+                <button type="submit" class="subscribe-btn">Subscribe Now</button>
+            </form>
+            
+            <div id="subscribe-success" class="success-message">
+                <i class="fa-solid fa-circle-check"></i> Thank you, <span id="display-sub-name"></span>! You have been successfully added to our mailing list.
+            </div>
+        </div>
+    </section>
+
+    <section class="archive-section">
+        <h2 class="section-title">Newsletter Archives</h2>
+        
+        <div class="archive-grid">
+            
+            <div class="issue-card">
+                <div class="issue-header">
+                    <span class="issue-tag">Vol 4, Issue 1</span>
+                    <span class="issue-date">March 2026</span>
+                </div>
+                <h4>Spring Symposium Highlights & Early Career Grants</h4>
+                <p>Read the comprehensive summary of our spring gathering, featuring keynote abstracts and new grant opportunities for postdoctoral fellows.</p>
+                <a href="#" class="read-btn">Read Issue <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="issue-card">
+                <div class="issue-header">
+                    <span class="issue-tag">Vol 3, Issue 4</span>
+                    <span class="issue-date">December 2025</span>
+                </div>
+                <h4>Year in Review: Breakthroughs in Neuropeptides</h4>
+                <p>A look back at the most cited papers from our society members this year, plus announcements for the upcoming executive council elections.</p>
+                <a href="#" class="read-btn">Read Issue <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="issue-card">
+                <div class="issue-header">
+                    <span class="issue-tag">Vol 3, Issue 3</span>
+                    <span class="issue-date">September 2025</span>
+                </div>
+                <h4>Industry Collaboration & New Diagnostics</h4>
+                <p>Exploring the bridge between academic research and industry applications. Featuring an interview with our lead industry partners.</p>
+                <a href="#" class="read-btn">Read Issue <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+        </div>
+    </section>
+
+    <%- include('partials/footer') %>
+
+    <script>
+        document.getElementById('newsletter-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent page reload
+            
+            // Get user input
+            const subName = document.getElementById('sub-name').value;
+            
+            // Hide the form visually to show success state
+            this.style.display = 'none';
+            
+            // Populate and reveal success message
+            document.getElementById('display-sub-name').innerText = subName;
+            document.getElementById('subscribe-success').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

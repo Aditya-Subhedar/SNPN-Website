@@ -5,6 +5,53 @@
     <title>Society of Neuropeptides and Neuroendocrinology (SNPN)</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- Slideshow Interactive Enhancements --- */
+        
+        /* Ensure the frame acts as the absolute baseline for the arrow buttons */
+        .slideshow-frame {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Base Arrow Style */
+        .slide-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(10, 47, 93, 0.6); /* Translucent theme dark blue */
+            color: #ffffff;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            z-index: 20;
+            opacity: 0; /* Hidden by default */
+            transition: all 0.3s ease;
+        }
+
+        /* Position anchors */
+        .prev-slide { left: 15px; }
+        .next-slide { right: 15px; }
+
+        /* Reveal navigation arrows cleanly on hover */
+        .slideshow-frame:hover .slide-nav-btn {
+            opacity: 1;
+        }
+
+        /* Hover states for the buttons themselves */
+        .slide-nav-btn:hover {
+            background: rgba(10, 47, 93, 0.95);
+            color: #5bc0de; /* Matches your accent light blue tint */
+            transform: translateY(-50%) scale(1.1);
+        }
+    </style>
 </head>
 <body>
     <%- include('partials/header') %>
@@ -12,43 +59,92 @@
     <div class="hero-splitscreen">
         
         <div class="hero-content hero-left">
-    <div class="hero-welcome-container">
-        <div class="slideshow-frame">
-            <img src="/images/Slideshow/ss1.png" class="slide active">
-            <img src="/images/Slideshow/ss2.png" class="slide">
-            <img src="/images/Slideshow/ss3.png" class="slide">
-            <img src="/images/Slideshow/ss4.png" class="slide">
-            <img src="/images/Slideshow/ss5.png" class="slide">
-            <img src="/images/Slideshow/ss6.png" class="slide">
-            <img src="/images/Slideshow/ss7.png" class="slide">
-            <img src="/images/Slideshow/ss8.png" class="slide">
-            <img src="/images/Slideshow/ss9.png" class="slide">
-            <img src="/images/Slideshow/ss10.png" class="slide">
+            <div class="hero-welcome-container">
+                <div class="slideshow-frame">
+                    <img src="/images/Slideshow/ss1.png" class="slide active">
+                    <img src="/images/Slideshow/ss2.png" class="slide">
+                    <img src="/images/Slideshow/ss3.png" class="slide">
+                    <img src="/images/Slideshow/ss4.png" class="slide">
+                    <img src="/images/Slideshow/ss5.png" class="slide">
+                    <img src="/images/Slideshow/ss6.png" class="slide">
+                    <img src="/images/Slideshow/ss7.png" class="slide">
+                    <img src="/images/Slideshow/ss8.png" class="slide">
+                    <img src="/images/Slideshow/ss9.png" class="slide">
+                    <img src="/images/Slideshow/ss10.png" class="slide">
+
+                    <button class="slide-nav-btn prev-slide" aria-label="Previous Slide">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="slide-nav-btn next-slide" aria-label="Next Slide">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <h1 class="hero-title">Welcome</h1>
+                <p class="hero-description">
+                    The Society of Neuropeptides and Neuroendocrinology (SNPN) welcomes you to explore 
+                    contemporary research and foster connections in this vital scientific field. 
+                    We aim to advance research in India through collaboration and excellence.
+                </p>
+                <a href="/about" class="hero-button">Read more about SNPN</a>
+            </div>
         </div>
 
-        <h1 class="hero-title">Welcome</h1>
-        <p class="hero-description">
-            The Society of Neuropeptides and Neuroendocrinology (SNPN) welcomes you to explore 
-            contemporary research and foster connections in this vital scientific field. 
-            We aim to advance research in India through collaboration and excellence.
-        </p>
-        <a href="/about" class="hero-button">Read more about SNPN</a>
-    </div>
-</div>
+        <script>
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.slide');
+            const slideshowFrame = document.querySelector('.slideshow-frame');
+            const prevButton = document.querySelector('.prev-slide');
+            const nextButton = document.querySelector('.next-slide');
+            let rotationTimer;
 
-<script>
-    // Tiny script to handle the slideshow rotation
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    
-    function showNextSlide() {
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add('active');
-    }
-    
-    setInterval(showNextSlide, 4000); // Changes image every 4 seconds
-</script>
+            // Master display shifting engine
+            function changeSlide(targetIndex) {
+                // Strip visibility from current index
+                slides[currentSlide].classList.remove('active');
+                
+                currentSlide = targetIndex;
+
+                // Infinite loop validation bounds checks
+                if (currentSlide >= slides.length) {
+                    currentSlide = 0;
+                } else if (currentSlide < 0) {
+                    currentSlide = slides.length - 1;
+                }
+
+                // Add active class visibility to new item
+                slides[currentSlide].classList.add('active');
+            }
+
+            // Automatic loop engine controllers
+            function startIntervalLoop() {
+                rotationTimer = setInterval(() => {
+                    changeSlide(currentSlide + 1);
+                }, 4000);
+            }
+
+            function stopIntervalLoop() {
+                clearInterval(rotationTimer);
+            }
+
+            // Initialize on window loading sequence
+            startIntervalLoop();
+
+            /* --- Hover Event Listeners --- */
+            slideshowFrame.addEventListener('mouseenter', stopIntervalLoop);
+            slideshowFrame.addEventListener('mouseleave', startIntervalLoop);
+
+            /* --- Click Event Listeners --- */
+            nextButton.addEventListener('click', (event) => {
+                event.stopPropagation(); // Prevents frame selection side-effects
+                changeSlide(currentSlide + 1);
+            });
+
+            prevButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                changeSlide(currentSlide - 1);
+            });
+        </script>
 
         <div class="hero-content hero-right">
             <div class="map-container">
@@ -93,12 +189,11 @@
                     <% } %>
                 </div>
                 
-                <a href="/workshops" class="card-button">Learn more</a>
+                <a href="/events" class="card-button">Learn more</a>
             </div>
 
         </div> 
     </div> 
-
 
     <%- include('partials/footer') %>
 </body>

@@ -7,199 +7,303 @@
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <style>
-        /* Shared page header style */
-        .page-header {
-            background-color: var(--primary-blue);
-            color: var(--text-white);
-            padding: 60px 10%;
-            text-align: center;
-            box-shadow: inset 0 -10px 20px rgba(0,0,0,0.1);
-        }
-        .page-header h1 {
-            font-size: 38px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
-        .page-header p {
-            color: var(--accent-blue);
-            font-size: 16px;
-            font-weight: 500;
-        }
+        <style>
+            /* Shared page header style */
+            .page-header {
+                background-color: var(--primary-blue);
+                color: var(--text-white);
+                padding: 60px 10%;
+                text-align: center;
+                box-shadow: inset 0 -10px 20px rgba(0,0,0,0.1);
+            }
+            .page-header h1 {
+                font-size: 38px;
+                font-weight: 700;
+                margin-bottom: 10px;
+                letter-spacing: 1px;
+            }
+            .page-header p {
+                color: var(--accent-blue);
+                font-size: 16px;
+                font-weight: 500;
+            }
 
-        .membership-container {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 5%;
-        }
+            .membership-container {
+                max-width: 1200px;
+                margin: 60px auto;
+                padding: 0 5%;
+            }
 
-        .section-title {
-            color: var(--primary-blue);
-            font-size: 28px;
-            border-bottom: 3px solid var(--accent-blue);
-            padding-bottom: 10px;
-            margin-bottom: 40px;
-            display: inline-block;
-        }
+            .section-title {
+                color: var(--primary-blue);
+                font-size: 28px;
+                border-bottom: 3px solid var(--accent-blue);
+                padding-bottom: 10px;
+                margin-bottom: 40px;
+                display: inline-block;
+            }
 
-        /* --- Benefits Grid --- */
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
+            /* --- Benefits Grid --- */
+            .benefits-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 30px;
+                margin-bottom: 60px;
+            }
 
-        .benefit-card {
-            background-color: var(--bg-white);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: var(--card-shadow);
-            border: 1px solid rgba(0,0,0,0.02);
-            text-align: center;
-        }
+            .benefit-card {
+                background-color: var(--bg-white);
+                padding: 30px;
+                border-radius: 12px;
+                box-shadow: var(--card-shadow);
+                border: 1px solid rgba(0,0,0,0.02);
+                text-align: center;
+            }
 
-        .benefit-icon {
-            font-size: 36px;
-            color: var(--accent-blue);
-            margin-bottom: 15px;
-        }
+            .benefit-icon {
+                font-size: 36px;
+                color: var(--accent-blue);
+                margin-bottom: 15px;
+            }
 
-        .benefit-card h3 {
-            color: var(--text-dark);
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
+            .benefit-card h3 {
+                color: var(--text-dark);
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
 
-        .benefit-card p {
-            color: var(--text-gray);
-            font-size: 14px;
-            line-height: 1.6;
-        }
+            .benefit-card p {
+                color: var(--text-gray);
+                font-size: 14px;
+                line-height: 1.6;
+            }
 
-        /* --- Tiers/Pricing Cards --- */
-        .tiers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-bottom: 60px;
-            align-items: stretch;
-        }
+            /* --- Tiers/Pricing Cards --- */
+            .tiers-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 40px;
+                margin-bottom: 60px;
+                align-items: stretch;
+            }
 
-        .tier-card {
-            background-color: var(--bg-white);
-            border-radius: 16px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: var(--card-shadow);
-            border: 1px solid rgba(0,0,0,0.03);
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            transition: transform 0.3s ease;
-        }
+            .tier-card {
+                background-color: var(--bg-white);
+                border-radius: 16px;
+                padding: 40px 30px;
+                text-align: center;
+                box-shadow: var(--card-shadow);
+                border: 1px solid rgba(0,0,0,0.03);
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                transition: transform 0.3s ease;
+            }
 
-        .tier-card:hover {
-            transform: translateY(-5px);
-        }
+            .tier-card:hover {
+                transform: translateY(-5px);
+            }
 
-        /* Highlight feature for Life Membership */
-        .tier-card.featured {
-            border: 2px solid var(--accent-blue);
-        }
+            /* Highlight feature for Life Membership */
+            .tier-card.featured {
+                border: 2px solid var(--accent-blue);
+            }
 
-        .badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--accent-blue);
-            color: var(--text-white);
-            padding: 4px 12px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            border-radius: 20px;
-        }
+            .badge {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                background-color: var(--accent-blue);
+                color: var(--text-white);
+                padding: 4px 12px;
+                font-size: 11px;
+                font-weight: 700;
+                text-transform: uppercase;
+                border-radius: 20px;
+            }
 
-        .tier-name {
-            font-size: 22px;
-            color: var(--primary-blue);
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
+            .tier-name {
+                font-size: 22px;
+                color: var(--primary-blue);
+                font-weight: 700;
+                margin-bottom: 15px;
+            }
 
-        .tier-price {
-            font-size: 36px;
-            color: var(--text-dark);
-            font-weight: 700;
-            margin-bottom: 25px;
-        }
+            .tier-price {
+                font-size: 36px;
+                color: var(--text-dark);
+                font-weight: 700;
+                margin-bottom: 25px;
+            }
 
-        .tier-price span {
-            font-size: 14px;
-            color: var(--text-gray);
-            font-weight: 400;
-        }
+            .tier-price span {
+                font-size: 14px;
+                color: var(--text-gray);
+                font-weight: 400;
+            }
 
-        .tier-features {
-            list-style: none;
-            text-align: left;
-            margin-bottom: 35px;
-        }
+            .tier-features {
+                list-style: none;
+                text-align: left;
+                margin-bottom: 35px;
+            }
 
-        .tier-features li {
-            font-size: 15px;
-            color: var(--text-gray);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+            .tier-features li {
+                font-size: 15px;
+                color: var(--text-gray);
+                margin-bottom: 12px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
 
-        .tier-features li i {
-            color: #2ed573; /* Green checkmark */
-        }
+            .tier-features li i {
+                color: #2ed573; /* Green checkmark */
+            }
 
-        /* --- Instructions / Bank Details Card --- */
-        .instructions-card {
-            background-color: var(--bg-white);
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: var(--card-shadow);
-            border: 1px solid rgba(0,0,0,0.03);
-        }
+            /* --- Instructions / Bank Details Card --- */
+            .instructions-card {
+                background-color: var(--bg-white);
+                border-radius: 16px;
+                padding: 40px;
+                box-shadow: var(--card-shadow);
+                border: 1px solid rgba(0,0,0,0.03);
+            }
 
-        .instructions-card h3 {
-            color: var(--primary-blue);
-            font-size: 22px;
-            margin-bottom: 20px;
-        }
+            .instructions-card h3 {
+                color: var(--primary-blue);
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
 
-        .instructions-list {
-            padding-left: 20px;
-            margin-bottom: 30px;
-        }
+            .instructions-list {
+                padding-left: 20px;
+                margin-bottom: 30px;
+            }
 
-        .instructions-list li {
-            font-size: 15px;
-            line-height: 1.8;
-            color: var(--text-gray);
-            margin-bottom: 10px;
-        }
+            .instructions-list li {
+                font-size: 15px;
+                line-height: 1.8;
+                color: var(--text-gray);
+                margin-bottom: 10px;
+            }
 
-        .bank-details {
-            background-color: var(--bg-light);
-            border-left: 4px solid var(--accent-blue);
-            padding: 20px;
-            border-radius: 0 8px 8px 0;
-            font-family: monospace;
-            font-size: 14px;
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-    </style>
-</head>
+            .bank-details {
+                background-color: var(--bg-light);
+                border-left: 4px solid var(--accent-blue);
+                padding: 20px;
+                border-radius: 0 8px 8px 0;
+                font-family: monospace;
+                font-size: 14px;
+                color: var(--text-dark);
+                line-height: 1.6;
+            }
+
+                    /* --- Registration Modal Styles --- */
+            .modal-overlay {
+                display: none; /* Hidden by default */
+                position: fixed;
+                top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(10, 47, 93, 0.8); /* Dark blue transparent background */
+                backdrop-filter: blur(4px);
+                z-index: 1000;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .modal-content {
+                background: var(--bg-white);
+                padding: 40px;
+                border-radius: 12px;
+                width: 90%;
+                max-width: 500px;
+                box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+                position: relative;
+                animation: modalSlideIn 0.4s ease-out;
+            }
+
+            @keyframes modalSlideIn {
+                from { transform: translateY(-50px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
+            }
+
+            .close-modal {
+                position: absolute;
+                top: 20px; right: 25px;
+                font-size: 24px;
+                cursor: pointer;
+                color: var(--text-gray);
+                transition: color 0.3s;
+            }
+
+            .close-modal:hover { color: red; }
+
+            .modal-title {
+                color: var(--primary-blue);
+                margin-bottom: 25px;
+                font-size: 24px;
+                border-bottom: 2px solid var(--accent-blue);
+                padding-bottom: 10px;
+                display: inline-block;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+                text-align: left;
+            }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 8px;
+                font-weight: 600;
+                font-size: 14px;
+                color: var(--text-dark);
+            }
+
+            .form-group input[type="text"],
+            .form-group input[type="email"],
+            .form-group input[type="tel"],
+            .form-group input[type="file"],
+            .form-group select,
+            .form-group textarea {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+                font-size: 14px;
+                box-sizing: border-box;
+                font-family: inherit;
+            }
+
+            .eligibility-error {
+                color: #dc2626; /* Red error text */
+                font-size: 13px;
+                margin-top: 6px;
+                font-weight: 600;
+                display: none;
+}
+
+            .submit-btn {
+                width: 100%;
+                padding: 14px;
+                background-color: var(--primary-blue);
+                color: white;
+                border: none;
+                border-radius: 6px;
+                font-size: 16px;
+                font-weight: 700;
+                cursor: pointer;
+                margin-top: 10px;
+                transition: background 0.3s;
+            }
+
+            .submit-btn:hover {
+                background-color: var(--accent-blue);
+            }
+
+            
+        </style>
+    </head>
 <body>
     <%- include('partials/header') %>
 
@@ -208,48 +312,48 @@
         <p>Join a community committed to advancing neuroscience research</p>
     </div>
 
-<style>
-        /* Specific styles for the plan buttons and alert box */
-        .plan-btn {
-            margin-top: auto; /* Pushes button to the bottom of the card */
-            padding: 12px 20px;
-            background-color: transparent;
-            color: var(--accent-blue);
-            border: 2px solid var(--accent-blue);
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
+        <style>
+            /* Specific styles for the plan buttons and alert box */
+            .plan-btn {
+                margin-top: auto; /* Pushes button to the bottom of the card */
+                padding: 12px 20px;
+                background-color: transparent;
+                color: var(--accent-blue);
+                border: 2px solid var(--accent-blue);
+                border-radius: 8px;
+                font-size: 15px;
+                font-weight: 700;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                width: 100%;
+            }
 
-        .plan-btn:hover {
-            background-color: var(--accent-blue);
-            color: var(--text-white);
-        }
+            .plan-btn:hover {
+                background-color: var(--accent-blue);
+                color: var(--text-white);
+            }
 
-        .plan-btn.selected {
-            background-color: var(--primary-blue);
-            color: var(--text-white);
-            border-color: var(--primary-blue);
-        }
+            .plan-btn.selected {
+                background-color: var(--primary-blue);
+                color: var(--text-white);
+                border-color: var(--primary-blue);
+            }
 
-        .selected-plan-alert {
-            background-color: #e6f7ff;
-            border-left: 4px solid var(--accent-blue);
-            padding: 15px 20px;
-            margin-bottom: 25px;
-            border-radius: 4px;
-            font-size: 16px;
-            color: var(--primary-blue);
-        }
+            .selected-plan-alert {
+                background-color: #e6f7ff;
+                border-left: 4px solid var(--accent-blue);
+                padding: 15px 20px;
+                margin-bottom: 25px;
+                border-radius: 4px;
+                font-size: 16px;
+                color: var(--primary-blue);
+            }
 
-        .selected-plan-alert span {
-            font-weight: 700;
-            color: var(--text-dark);
-        }
-    </style>
+            .selected-plan-alert span {
+                font-weight: 700;
+                color: var(--text-dark);
+            }
+        </style>
 
     <div class="membership-container">
         
@@ -304,7 +408,7 @@
 
             <div class="tier-card">
                 <h3 class="tier-name">Industry Member</h3>
-                <div class="tier-price">₹5000 <span>/ Annum</span></div>
+                <div class="tier-price">₹10000 <span>/ Annum</span></div>
                 <ul class="tier-features">
                     <li><i class="fa-solid fa-circle-check"></i> Access to digital newsletter</li>
                     <li><i class="fa-solid fa-circle-check"></i> Free scientific updates</li>
@@ -316,63 +420,170 @@
             </div>
 
         </div>
-
-        <h2 class="section-title">How to Apply</h2>
-        <div id="payment-section" class="instructions-card">
-            <h3>Registration Process</h3>
+    </div> 
+        <div class="modal-overlay" id="registration-modal" style="display: none !important;">
+        <div class="modal-content" style="max-height: 90vh; overflow-y: auto;">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h3 class="modal-title">Member Registration</h3>
             
-            <div class="selected-plan-alert" id="plan-alert" style="display: none;">
-                Currently Selected Plan: <span id="display-plan-name">None</span> - <span id="display-plan-price"></span>
+            <div id="modal-form-container">
+                <p style="margin-bottom: 20px; font-size: 14px; color: var(--text-gray);">
+                    Creating profile for: <strong id="modal-plan-name" style="color: var(--accent-blue);">Plan</strong>
+                </p>
+
+                <form id="registration-form">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" id="user-name" placeholder="Dr. Jane Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" placeholder="jane.doe@university.edu" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Complete Address *</label>
+                        <textarea rows="2" placeholder="Residential or Institutional Address" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Institutional/Organizational Affiliation *</label>
+                        <input type="text" placeholder="e.g. Pune University" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Current Post / Designation *</label>
+                        <select id="user-post" required>
+                            <option value="" disabled selected>Select your current role</option>
+                            <option value="student">Student (Undergrad/Postgrad)</option>
+                            <option value="postdoc">Post-Doctoral Fellow</option>
+                            <option value="earlycareer">Early Career Researcher</option>
+                            <option value="faculty">Faculty</option>
+                            <option value="scientist">Scientist</option>
+                            <option value="industry">Industry Professional</option>
+                        </select>
+                        <div id="post-error" class="eligibility-error" style="display: none; color: #dc2626; font-size: 13px; margin-top: 5px;"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Upload CV (PDF) *</label>
+                        <input type="file" accept=".pdf" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Upload ID Proof (PDF/JPG/PNG) *</label>
+                        <input type="file" accept=".pdf,.jpg,.jpeg,.png" required>
+                    </div>
+                    <button type="submit" class="submit-btn" style="width: 100%; padding: 12px; background-color: var(--primary-blue, #0A2F5D); color: white; border: none; border-radius: 6px; cursor: pointer;">Verify Eligibility & Proceed</button>
+                </form>
             </div>
 
-            <ol class="instructions-list">
-                <li>Choose your desired membership tier from the options listed above.</li>
-                <li>Transfer the corresponding fee using online banking (NEFT/RTGS/IMPS) or via <strong>Demand Draft (DD)</strong> to the official account listed below.</li>
-                <li>Take a screenshot or save the receipt/transaction ID (or DD number) of your successful payment.</li>
-                <li>Email your details along with your CV and payment proof to <strong>membership@snpn.org</strong> (or submit via the application form if active).</li>
-            </ol>
+            <div id="modal-payment-container" style="display: none;">
+                <div class="selected-plan-alert" id="plan-alert" style="background: #e0f2fe; padding: 15px; border-radius: 8px; margin-bottom: 20px; color: #0369a1; border: 1px solid #bae6fd; font-size: 14.5px;">
+                    </div>
+                
+                <h4 style="margin-bottom: 10px; color: var(--primary-blue, #0A2F5D);">Next Steps:</h4>
+                <ol class="instructions-list" style="margin-bottom: 20px; padding-left: 20px; font-size: 14px; line-height: 1.6; color: #475569;">
+                    <li>Transfer the fee using online banking (NEFT/RTGS) or via <strong>Demand Draft (DD)</strong>.</li>
+                    <li>Save a screenshot of the receipt, transaction ID, or DD number.</li>
+                    <li>Email your payment proof along with your CV and ID to <strong>membership@snpn.org</strong>.</li>
+                </ol>
 
-            <div class="bank-details">
-                <strong>Account Name:</strong> Society for Neuropeptides and Neuroendocrinology<br>
-                <strong>Bank Name:</strong> Bank of Maharashtra<br>
-                <strong>Account Number:</strong> MAHB0001355<br>
-                <strong>IFSC Code:</strong> XXXXXXXXXXX<br>
-                <strong>Branch:</strong> Bank of Maharashtra - Savitribai Phule Pune University Branch<br>
-                <br>
-                <em>* If paying by Demand Draft, please draw it in favor of "Society for Neuropeptides and Neuroendocrinology" payable at</em> <b>Savitribai Phule Pune University Campus Branch.</b>
+                <div class="bank-details" style="background: #f8fafc; padding: 20px; border-radius: 8px; border: 1px dashed #cbd5e1; font-size: 14px; line-height: 1.6; color: #334155;">
+                    <strong>Account Name:</strong> Society for Neuropeptides and Neuroendocrinology<br>
+                    <strong>Bank Name:</strong> Bank of Maharashtra<br>
+                    <strong>Branch:</strong> Savitribai Phule Pune University Branch<br>
+                    <strong>Account Number:</strong> [Insert Actual A/C Number]<br>
+                    <strong>IFSC Code:</strong> MAHB0001355<br>
+                    <br>
+                    <em>* For Demand Drafts: Please draw in favor of "Society for Neuropeptides and Neuroendocrinology" payable at Pune.</em>
+                </div>
             </div>
+
         </div>
-
     </div>
 
     <%- include('partials/footer') %>
 
     <script>
+        let currentSelectedPlan = '';
+        let currentSelectedPrice = '';
+
         function selectPlan(buttonElement, planName, planPrice) {
-            // 1. Reset all buttons back to default state
+            // Reset buttons
             const allButtons = document.querySelectorAll('.plan-btn');
             allButtons.forEach(btn => {
                 btn.classList.remove('selected');
                 btn.innerText = 'Select Plan';
             });
 
-            // 2. Highlight the clicked button
             buttonElement.classList.add('selected');
-            buttonElement.innerText = '✓ Selected';
+            buttonElement.innerText = 'Selected';
 
-            // 3. Update the text in the payment section
-            document.getElementById('display-plan-name').innerText = planName;
-            document.getElementById('display-plan-price').innerText = planPrice;
-            
-            // 4. Reveal the alert box if it was hidden
-            document.getElementById('plan-alert').style.display = 'block';
+            currentSelectedPlan = planName;
+            currentSelectedPrice = planPrice;
 
-            // 5. Smoothly scroll down to the payment section
-            document.getElementById('payment-section').scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'center' 
-            });
+            // Reset modal to Step 1 (Form) just in case they closed it on Step 2 previously
+            document.getElementById('modal-form-container').style.display = 'block';
+            document.getElementById('modal-payment-container').style.display = 'none';
+            document.getElementById('registration-form').reset();
+            document.getElementById('post-error').style.display = 'none';
+
+            // Set Title and Open Modal
+            document.getElementById('modal-plan-name').innerText = planName;
+            document.getElementById('registration-modal').style.setProperty('display', 'flex', 'important');
         }
+
+        function closeModal() {
+            document.getElementById('registration-modal').style.setProperty('display', 'none', 'important');
+            const selectedBtn = document.querySelector('.plan-btn.selected');
+            if(selectedBtn) selectedBtn.innerText = 'Select Plan';
+        }
+
+        document.getElementById('registration-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const userPost = document.getElementById('user-post').value;
+            const errorDiv = document.getElementById('post-error');
+            let isEligible = false;
+            let errorMessage = "";
+
+            // --- ELIGIBILITY VALIDATION LOGIC ---
+            if (currentSelectedPlan === 'Lifetime Member') {
+                if (['faculty', 'scientist'].includes(userPost)) {
+                    isEligible = true;
+                } else {
+                    errorMessage = "Lifetime Membership is restricted to academic and scientific personnel (Faculty/Scientists).";
+                }
+            } else if (currentSelectedPlan === 'Annual Member') {
+                if (['student', 'postdoc', 'earlycareer', 'faculty', 'scientist'].includes(userPost)) {
+                    isEligible = true;
+                } else {
+                    errorMessage = "Annual Membership is restricted to students and academic personnel. Industry professionals must select the Industry plan.";
+                }
+            } else if (currentSelectedPlan === 'Industry Member') {
+                if (userPost === 'industry') {
+                    isEligible = true;
+                } else {
+                    errorMessage = "The Industry Membership is exclusively for Industry Professionals.";
+                }
+            }
+
+            // Stop if ineligible
+            if (!isEligible) {
+                errorDiv.innerText = errorMessage;
+                errorDiv.style.display = 'block';
+                return; 
+            }
+
+            // If eligible, transition the modal from Step 1 to Step 2
+            const userName = document.getElementById('user-name').value;
+            
+            document.getElementById('plan-alert').innerHTML = `Eligibility Verified! Welcome, <strong>${userName}</strong>. Please complete your transaction for the <strong>${currentSelectedPlan}</strong> (${currentSelectedPrice}).`;
+            
+            // Hide form, show payment details
+            document.getElementById('modal-form-container').style.display = 'none';
+            document.getElementById('modal-payment-container').style.display = 'block';
+        });
     </script>
 </body>
 </html>

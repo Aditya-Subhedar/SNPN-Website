@@ -19,8 +19,38 @@
         <nav class="main-nav">
             <a href="/newsletter">Newsletter</a>
             <a href="/awards">Awards</a>
-            <a href="/workshops">Events</a> <a href="/gallery">Gallery</a>
+            <a href="/events">Events</a>
+            <a href="/gallery">Gallery</a>
             <a href="#contact-footer">CONTACT</a>
         </nav>
     </div>
 </header>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // 1. Find all anchor links inside your navbar/header
+        // (This targets links inside header elements; adjust selector if you use a specific class like '.nav-links a')
+        const currentNavbarLinks = document.querySelectorAll('header a, nav a, .navbar a');
+
+        currentNavbarLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                const linkHref = link.getAttribute('href');
+                const currentPath = window.location.pathname;
+
+                // 2. Check if the clicked link matches the page the user is currently looking at
+                if (linkHref === currentPath || (linkHref === '/' && currentPath === '')) {
+                    
+                    // 3. Only intercept if the user has actually scrolled down
+                    if (window.scrollY > 0) {
+                        event.preventDefault(); // Stop the browser from doing an abrupt full-page reload
+                        
+                        // 4. Perform the sophisticated smooth scroll up
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    });
+</script>
