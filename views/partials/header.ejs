@@ -9,9 +9,54 @@
                 <a href="/about">About</a>
                 <a href="/membership">Get Involved</a> <a href="/membership">Resources</a> 
             </nav>
-            <div class="search-container">
-                <input type="text" placeholder="Search the SNPN site">
-                <button><i class="fas fa-search"></i></button> </div>
+            <div class="search-container" style="position: relative;">
+    <input type="text" id="site-search-input" placeholder="Search the SNPN site" autocomplete="off">
+    <button id="site-search-btn" aria-label="Search"><i class="fas fa-search"></i></button>
+    
+    <div id="search-dropdown" class="search-dropdown-menu" style="display: none;"></div>
+</div>
+
+<style>
+    /* Dropdown Styling */
+    .search-dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 4px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        max-height: 250px;
+        overflow-y: auto;
+        z-index: 1000;
+        margin-top: 8px;
+    }
+    .search-result-item {
+        display: block;
+        padding: 12px 15px;
+        color: var(--primary-blue, #0A2F5D);
+        text-decoration: none;
+        border-bottom: 1px solid #f1f5f9;
+        text-align: left;
+        font-size: 14px;
+        transition: background 0.2s ease;
+    }
+    .search-result-item:hover {
+        background: #f0f8ff; /* Light blue hover tint */
+        color: #0369a1;
+    }
+    .search-result-item:last-child {
+        border-bottom: none;
+    }
+    .no-results {
+        padding: 12px 15px;
+        color: #64748b;
+        font-size: 14px;
+        text-align: left;
+        font-style: italic;
+    }
+</style>
         </div>
     </div>
     
@@ -51,6 +96,79 @@
                     }
                 }
             });
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const searchInput = document.getElementById('site-search-input');
+        const searchDropdown = document.getElementById('search-dropdown');
+
+        // 1. The "Cheat Sheet" Index
+        // Add pages, their URLs, and forgiving keywords a user might type
+        const searchIndex = [
+            { title: 'Home', url: '/', keywords: ['welcome', 'start', 'india', 'main'] },
+            { title: 'About SNPN', url: '/about', keywords: ['history', 'mission', 'vision', 'who we are', 'society'] },
+            { title: 'Membership', url: '/membership', keywords: ['join', 'register', 'fees', 'student', 'faculty', 'industry', 'benefits', 'apply'] },
+            { title: 'Upcoming Events', url: '/events', keywords: ['calendar', 'conferences', 'seminars', 'workshops', 'dates', 'meetings'] },
+            { title: 'Executive Council', url: '/council', keywords: ['leadership', 'board', 'members', 'president', 'directors', 'team', 'committee'] },
+            { title: 'Awards & Grants', url: '/awards', keywords: ['recognition', 'prizes', 'funding', 'achievements'] },
+            { title: 'SNPN Newsletter', url: '/newsletter', keywords: ['updates', 'news', 'articles', 'publications', 'read', 'journal'] },
+            { title: 'Photo Gallery', url: '/gallery', keywords: ['photos', 'pictures', 'images', 'past events', 'memories'] },
+            { title: 'Contact Us', url: '#contact-footer', keywords: ['email', 'phone', 'address', 'reach out', 'help', 'support'] }
+        ];
+
+        // 2. Listen to the user typing
+        searchInput.addEventListener('input', (event) => {
+            const query = event.target.value.toLowerCase().trim();
+            
+            // If they clear the box, hide the dropdown
+            if (query.length === 0) {
+                searchDropdown.style.display = 'none';
+                searchDropdown.innerHTML = '';
+                return;
+            }
+
+            // 3. Filter the cheat sheet for matches
+            const matches = searchIndex.filter(page => {
+                const titleMatch = page.title.toLowerCase().includes(query);
+                const keywordMatch = page.keywords.some(keyword => keyword.includes(query));
+                return titleMatch || keywordMatch;
+            });
+
+            // 4. Build the HTML for the dropdown
+            searchDropdown.innerHTML = '';
+            
+            if (matches.length > 0) {
+                matches.forEach(match => {
+                    const link = document.createElement('a');
+                    link.href = match.url;
+                    link.className = 'search-result-item';
+                    link.innerHTML = `<strong>${match.title}</strong>`;
+                    
+                    // Close the dropdown cleanly if they click a result
+                    link.addEventListener('click', () => {
+                        searchDropdown.style.display = 'none';
+                        searchInput.value = ''; // Optional: clears the bar after click
+                    });
+                    
+                    searchDropdown.appendChild(link);
+                });
+            } else {
+                // Friendly empty state for typos
+                searchDropdown.innerHTML = '<div class="no-results">No exact matches found. Try a simpler word.</div>';
+            }
+            
+            // Reveal the box
+            searchDropdown.style.display = 'block';
+        });
+
+        // 5. UX Guard: Hide dropdown if the user clicks anywhere else on the page
+        document.addEventListener('click', (event) => {
+            if (!searchInput.contains(event.target) && !searchDropdown.contains(event.target)) {
+                searchDropdown.style.display = 'none';
+            }
         });
     });
 </script>
