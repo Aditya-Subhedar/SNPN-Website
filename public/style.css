@@ -14,7 +14,6 @@ html {
 }
 
 :root {
-    /* Updated Palette: Slate Ink & Vivid Cobalt replacing IBRO Navy/Cyan */
     --primary-dark: #0F172A; /* Deep slate ink */
     --secondary-dark: #1E293B;
     --accent-brand: #2563EB; /* Vibrant royal cobalt */
@@ -133,7 +132,6 @@ body {
     color: var(--accent-brand);
 }
 
-/* --- Hero Section (Removed IBRO's 100deg Diagonal Graphic Split) --- */
 .hero-splitscreen {
     display: flex;
     min-height: calc(85vh - 120px);
