@@ -10,20 +10,22 @@
     <style>
         /* Specific styles for the About page to match the new aesthetic */
         .page-header {
-            background-color: var(--primary-blue);
-            color: var(--text-white);
+            /* Changed to the deep purplish-navy to match the awards section */
+            background-color: #0A2F5D; 
+            color: #ffffff;
             padding: 60px 10%;
             text-align: center;
             box-shadow: inset 0 -10px 20px rgba(0,0,0,0.1);
         }
         .page-header h1 {
+            color: #ffffff; /* Explicitly forced white so it fixes the issue in image_957c02.png */
             font-size: 38px;
             font-weight: 700;
             margin-bottom: 10px;
             letter-spacing: 1px;
         }
         .page-header p {
-            color: var(--accent-blue);
+            color: #CBD5E1; /* Soft slate for the subtitle, much more readable on dark backgrounds */
             font-size: 16px;
             font-weight: 500;
         }
@@ -33,25 +35,25 @@
             padding: 0 5%;
         }
         .about-card {
-            background-color: var(--bg-white);
+            background-color: var(--bg-white, #ffffff);
             border-radius: 16px;
             padding: 50px;
-            box-shadow: var(--card-shadow);
+            box-shadow: var(--card-shadow, 0 4px 20px -2px rgba(15, 23, 42, 0.08));
             margin-bottom: 40px;
-            border: 1px solid rgba(0,0,0,0.03);
+            border: 1px solid var(--border-subtle, #E2E8F0);
         }
         .about-card h2 {
-            color: var(--primary-blue);
+            color: var(--primary-dark, #0F172A);
             margin-bottom: 25px;
             font-size: 28px;
-            border-bottom: 3px solid var(--accent-blue);
+            border-bottom: 3px solid var(--accent-brand, #2563EB);
             padding-bottom: 10px;
             display: inline-block;
         }
         .about-text {
             font-size: 16px;
             line-height: 1.8;
-            color: var(--text-gray);
+            color: var(--text-gray, #475569);
             margin-bottom: 20px;
         }
         .profile-section {
@@ -66,15 +68,15 @@
             border-radius: 50%;
             object-fit: cover;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            border: 5px solid var(--bg-white);
+            border: 5px solid var(--bg-white, #ffffff);
         }
         .profile-info h3 {
-            color: var(--text-dark);
+            color: var(--text-dark, #0F172A);
             font-size: 26px;
             margin-bottom: 5px;
         }
         .profile-info h4 {
-            color: var(--accent-blue);
+            color: var(--accent-brand, #2563EB);
             font-size: 16px;
             font-weight: 600;
             margin-bottom: 20px;
