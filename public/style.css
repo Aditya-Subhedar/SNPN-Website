@@ -153,8 +153,8 @@ body {
 }
 
 .slideshow-frame {
-    width: 75%;
-    height: 300px; 
+    width: 60%;
+    height: 240px; 
     background: var(--bg-light); 
     border-radius: 10px;
     overflow: hidden;
@@ -193,7 +193,7 @@ body {
     line-height: 1.7;
     font-weight: 400;
     color: var(--text-gray);
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .hero-button {
