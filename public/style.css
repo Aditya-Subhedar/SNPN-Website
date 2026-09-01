@@ -143,8 +143,8 @@ body {
     flex: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 20px 6%;
+    align-items: flex-start;
+    padding: 40px 6% 20px; 
 }
 
 .hero-welcome-container {
@@ -153,15 +153,12 @@ body {
 }
 
 .slideshow-frame {
-    width: 60%;
-    height: 240px; 
+    width: 100%; /* Lets the container fill its column perfectly */
+    aspect-ratio: 16 / 9; /* Replaces fixed height to scale adaptively */
     background: var(--bg-light); 
     border-radius: 10px;
     overflow: hidden;
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-bottom: 20px;
     box-shadow: var(--card-shadow);
     border: 1px solid var(--border-subtle);
@@ -169,15 +166,20 @@ body {
 
 .slide {
     position: absolute;
-    max-width: 95%;
-    max-height: 95%;
+    top: 0;
+    left: 0;
+    width: 100%; /* Forces the image to reference the frame's size */
+    height: 100%;
     opacity: 0;
+    z-index: 1;
     transition: opacity 0.8s ease-in-out;
-    object-fit: contain; 
+    object-fit: contain; /* Ensures mixed-ratio images fit without cropping */
+    padding: 10px; /* Optional: gives the 95% scaled look you originally wanted */
 }
 
 .slide.active {
     opacity: 1;
+    z-index: 2; /* Ensures the visible slide is interactive and on top */
 }
 
 .hero-title {
@@ -216,8 +218,7 @@ body {
 .hero-right {
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 25px;
+    align-items: flex-start; 
 }
 
 .map-container {
