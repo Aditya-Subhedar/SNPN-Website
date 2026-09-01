@@ -8,87 +8,169 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* Specific styles for the About page to match the new aesthetic */
+        /* Enhanced Page Header with Background Image Overlay */
         .page-header {
-            /* Changed to the deep purplish-navy to match the awards section */
             background-color: #0A2F5D; 
+            /* Updated to use a local relative path */
+            background-image: linear-gradient(rgba(10, 47, 93, 0.85), rgba(10, 47, 93, 0.95)), url('/images/about-hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
             color: #ffffff;
-            padding: 60px 10%;
+            padding: 80px 10%;
             text-align: center;
             box-shadow: inset 0 -10px 20px rgba(0,0,0,0.1);
         }
         .page-header h1 {
-            color: #ffffff; /* Explicitly forced white so it fixes the issue in image_957c02.png */
-            font-size: 38px;
-            font-weight: 700;
-            margin-bottom: 10px;
+            color: #ffffff; 
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 15px;
             letter-spacing: 1px;
         }
         .page-header p {
-            color: #CBD5E1; /* Soft slate for the subtitle, much more readable on dark backgrounds */
-            font-size: 16px;
+            color: #CBD5E1; 
+            font-size: 18px;
             font-weight: 500;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
         }
+
         .about-container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 60px auto;
             padding: 0 5%;
         }
-        .about-card {
-            background-color: var(--bg-white, #ffffff);
+
+        /* Modern Split Layout for Text and Images */
+        .split-section {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+
+        .split-section.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .split-content {
+            flex: 1;
+        }
+
+        .split-image-wrapper {
+            flex: 1;
+            position: relative;
+        }
+
+        .split-image {
+            width: 100%;
             border-radius: 16px;
-            padding: 50px;
-            box-shadow: var(--card-shadow, 0 4px 20px -2px rgba(15, 23, 42, 0.08));
-            margin-bottom: 40px;
-            border: 1px solid var(--border-subtle, #E2E8F0);
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
         }
-        .about-card h2 {
+
+        .split-image:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Decorative background accent behind images */
+        .split-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: 15px;
+            bottom: 15px;
+            background: linear-gradient(135deg, var(--accent-brand, #2563EB), #0A2F5D);
+            border-radius: 16px;
+            z-index: -1;
+            opacity: 0.15;
+        }
+
+        .split-section.reverse .split-image-wrapper::before {
+            left: 15px;
+            right: -15px;
+        }
+
+        .section-title {
             color: var(--primary-dark, #0F172A);
-            margin-bottom: 25px;
-            font-size: 28px;
-            border-bottom: 3px solid var(--accent-brand, #2563EB);
-            padding-bottom: 10px;
-            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.2;
         }
+
+        .section-title span {
+            color: var(--accent-brand, #2563EB);
+        }
+
         .about-text {
             font-size: 16px;
             line-height: 1.8;
             color: var(--text-gray, #475569);
             margin-bottom: 20px;
         }
-        .profile-section {
-            display: flex;
-            gap: 50px;
-            align-items: center;
-            margin-top: 30px;
+
+        /* Core Focus Grid */
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
         }
-        .profile-image {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            border: 5px solid var(--bg-white, #ffffff);
+
+        .focus-card {
+            background-color: var(--bg-white, #ffffff);
+            border-radius: 12px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: var(--card-shadow, 0 4px 20px -2px rgba(15, 23, 42, 0.08));
+            border: 1px solid var(--border-subtle, #E2E8F0);
+            transition: all 0.3s ease;
         }
-        .profile-info h3 {
-            color: var(--text-dark, #0F172A);
-            font-size: 26px;
-            margin-bottom: 5px;
+
+        .focus-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-brand, #2563EB);
         }
-        .profile-info h4 {
+
+        .focus-icon {
+            font-size: 40px;
             color: var(--accent-brand, #2563EB);
-            font-size: 16px;
-            font-weight: 600;
             margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
-        
-        /* Make it stack nicely on mobile phones */
-        @media (max-width: 768px) {
-            .profile-section {
+
+        .focus-card h3 {
+            font-size: 18px;
+            color: var(--primary-dark, #0F172A);
+            margin-bottom: 12px;
+        }
+
+        .focus-card p {
+            font-size: 14px;
+            color: var(--text-gray, #475569);
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .split-section, .split-section.reverse {
                 flex-direction: column;
-                text-align: center;
+                gap: 40px;
+            }
+            .focus-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .focus-grid {
+                grid-template-columns: 1fr;
+            }
+            .page-header h1 {
+                font-size: 32px;
             }
         }
     </style>
@@ -103,23 +185,48 @@
 
     <div class="about-container">
         
-        <div class="about-card">
-            <h2>Our Mission & Vision</h2>
-            <p class="about-text">The Society of Neuropeptides and Neuroendocrinology (SNPN) was established with a singular vision: to foster collaboration, ignite innovation, and support groundbreaking research in the fields of neuropeptides and neuroendocrinology across India and globally.</p>
-            <p class="about-text">By providing a platform for both eminent scientists and emerging researchers, SNPN aims to facilitate the exchange of ideas, promote educational initiatives, and drive scientific inquiry that addresses crucial biological and medical challenges in neuroscience.</p>
+        <!-- Section 1: Mission -->
+        <div class="split-section">
+            <div class="split-content">
+                <h2 class="section-title">Our <span>Mission</span> & Vision</h2>
+                <p class="about-text">The Society of Neuropeptides and Neuroendocrinology (SNPN) was established with a singular vision: to foster collaboration, ignite innovation, and support groundbreaking research in the fields of neuropeptides and neuroendocrinology across India and globally.</p>
+                <p class="about-text">By providing a platform for both eminent scientists and emerging researchers, SNPN aims to facilitate the exchange of ideas, promote educational initiatives, and drive scientific inquiry that addresses crucial biological and medical challenges in neuroscience.</p>
+            </div>
+            <div class="split-image-wrapper">
+                <!-- Updated to use a local relative path -->
+                <img src="/images/About/mission-image.jpg" alt="Scientific Research Visualization" class="split-image">
+            </div>
         </div>
 
-        <div class="about-card">
-            <h2>Our Founding President</h2>
-            <div class="profile-section">
-                <img src="/images/founder.jpg" alt="Prof. Nishikant Subhedar" class="profile-image">
-                
-                <div class="profile-info">
-                    <h3>Prof. Nishikant Subhedar</h3>
-                    <h4>Founding President, SNPN</h4>
-                    <p class="about-text">Prof. Nishikant Subhedar has been a pioneering force in the realm of neuroendocrinology. His lifelong dedication to advancing the field laid the fundamental groundwork for the creation of SNPN.</p>
-                    <p class="about-text">Throughout his illustrious career, he has mentored countless students, led critical research projects, and championed the necessity of a dedicated society to unite researchers. His vision and leadership continue to inspire the society's current and future endeavors.</p>
-                </div>
+        <!-- Section 2: What We Do (Reversed Layout) -->
+        <div class="split-section reverse">
+            <div class="split-content">
+                <h2 class="section-title">Driving <span>Discovery</span></h2>
+                <p class="about-text">We bridge the gap between foundational molecular biology and applied clinical neuroendocrinology. Our society acts as a catalyst for interdisciplinary studies, bringing together experts in genetics, molecular biology, and behavioral neuroscience.</p>
+                <p class="about-text">Through annual symposiums, collaborative grants, and mentorship programs, we are building the next generation of scientific leaders equipped to decode the complex signaling pathways of the brain and endocrine systems.</p>
+            </div>
+            <div class="split-image-wrapper">
+                <!-- Updated to use a local relative path -->
+                <img src="/images/About/discovery-image.jpg" alt="Laboratory Research" class="split-image">
+            </div>
+        </div>
+
+        <!-- Section 3: Core Pillars Grid -->
+        <div class="focus-grid">
+            <div class="focus-card">
+                <i class="fas fa-network-wired focus-icon"></i>
+                <h3>Global Collaboration</h3>
+                <p>Connecting Indian researchers with leading neuroendocrine institutes worldwide to share methodologies and breakthroughs.</p>
+            </div>
+            <div class="focus-card">
+                <i class="fas fa-microscope focus-icon"></i>
+                <h3>Translational Research</h3>
+                <p>Supporting projects that translate bench-side neuropeptide discoveries into tangible clinical and therapeutic applications.</p>
+            </div>
+            <div class="focus-card">
+                <i class="fas fa-user-graduate focus-icon"></i>
+                <h3>Mentorship</h3>
+                <p>Providing specialized training, workshops, and networking opportunities for postgraduate students and early-career scientists.</p>
             </div>
         </div>
 
