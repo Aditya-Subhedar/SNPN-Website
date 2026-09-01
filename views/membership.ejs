@@ -100,6 +100,10 @@
                 transition: transform 0.3s ease;
             }
 
+            #pricing-cards {
+                scroll-margin-top: 140px; /* Adjust this value based on the exact height of your header */
+            }
+
             .tier-card:hover {
                 transform: translateY(-5px);
             }
@@ -281,7 +285,7 @@
                 margin-top: 6px;
                 font-weight: 600;
                 display: none;
-}
+            }
 
             .submit-btn {
                 width: 100%;
@@ -314,23 +318,25 @@
 
         <style>
             /* Specific styles for the plan buttons and alert box */
+            /* Button Base Style */
             .plan-btn {
-                margin-top: auto; /* Pushes button to the bottom of the card */
-                padding: 12px 20px;
-                background-color: transparent;
-                color: var(--accent-blue);
-                border: 2px solid var(--accent-blue);
+                background-color: var(--primary-dark, #0F172A); /* Deep blue background */
+                color: #ffffff; /* White text */
+                border: 2px solid var(--primary-dark, #0F172A);
+                padding: 12px 24px;
                 border-radius: 8px;
                 font-size: 15px;
-                font-weight: 700;
+                font-weight: 600;
                 cursor: pointer;
-                transition: all 0.3s ease;
                 width: 100%;
+                margin-top: 20px; 
+                transition: all 0.3s ease;
             }
 
+            /* Button Hover State */
             .plan-btn:hover {
-                background-color: var(--accent-blue);
-                color: var(--text-white);
+                background-color: #ffffff; /* Turns white on hover */
+                color: var(--primary-dark, #0F172A); /* Text turns dark */
             }
 
             .plan-btn.selected {
