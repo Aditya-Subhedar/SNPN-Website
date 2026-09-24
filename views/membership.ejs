@@ -11,7 +11,7 @@
             /* Shared page header style */
             .page-header {
                 background-color: var(--primary-blue, #0A2F5D);
-                color: var(--text-white);
+                color: var(--text-white, #ffffff);
                 padding: 60px 10%;
                 text-align: center;
                 box-shadow: inset 0 -10px 20px rgba(0,0,0,0.1);
@@ -23,7 +23,7 @@
                 letter-spacing: 1px;
             }
             .page-header p {
-                color: var(--accent-blue);
+                color: var(--accent-blue, #3b82f6);
                 font-size: 16px;
                 font-weight: 500;
             }
@@ -35,9 +35,9 @@
             }
 
             .section-title {
-                color: var(--primary-blue);
+                color: var(--primary-blue, #0A2F5D);
                 font-size: 28px;
-                border-bottom: 3px solid var(--accent-blue);
+                border-bottom: 3px solid var(--accent-blue, #3b82f6);
                 padding-bottom: 10px;
                 margin-bottom: 40px;
                 display: inline-block;
@@ -52,28 +52,28 @@
             }
 
             .benefit-card {
-                background-color: var(--bg-white);
+                background-color: var(--bg-white, #ffffff);
                 padding: 30px;
                 border-radius: 12px;
-                box-shadow: var(--card-shadow);
+                box-shadow: var(--card-shadow, 0 4px 6px rgba(0,0,0,0.05));
                 border: 1px solid rgba(0,0,0,0.02);
                 text-align: center;
             }
 
             .benefit-icon {
                 font-size: 36px;
-                color: var(--accent-blue);
+                color: var(--accent-blue, #3b82f6);
                 margin-bottom: 15px;
             }
 
             .benefit-card h3 {
-                color: var(--text-dark);
+                color: var(--text-dark, #1e293b);
                 font-size: 18px;
                 margin-bottom: 10px;
             }
 
             .benefit-card p {
-                color: var(--text-gray);
+                color: var(--text-gray, #64748b);
                 font-size: 14px;
                 line-height: 1.6;
             }
@@ -88,11 +88,11 @@
             }
 
             .tier-card {
-                background-color: var(--bg-white);
+                background-color: var(--bg-white, #ffffff);
                 border-radius: 16px;
                 padding: 40px 30px;
                 text-align: center;
-                box-shadow: var(--card-shadow);
+                box-shadow: var(--card-shadow, 0 4px 6px rgba(0,0,0,0.05));
                 border: 1px solid rgba(0,0,0,0.03);
                 display: flex;
                 flex-direction: column;
@@ -101,7 +101,7 @@
             }
 
             #pricing-cards {
-                scroll-margin-top: 140px; /* Adjust this value based on the exact height of your header */
+                scroll-margin-top: 140px;
             }
 
             .tier-card:hover {
@@ -110,15 +110,15 @@
 
             /* Highlight feature for Life Membership */
             .tier-card.featured {
-                border: 2px solid var(--accent-blue);
+                border: 2px solid var(--accent-blue, #3b82f6);
             }
 
             .badge {
                 position: absolute;
                 top: 15px;
                 right: 15px;
-                background-color: var(--accent-blue);
-                color: var(--text-white);
+                background-color: var(--accent-blue, #3b82f6);
+                color: var(--text-white, #ffffff);
                 padding: 4px 12px;
                 font-size: 11px;
                 font-weight: 700;
@@ -128,21 +128,21 @@
 
             .tier-name {
                 font-size: 22px;
-                color: var(--primary-blue);
+                color: var(--primary-blue, #0A2F5D);
                 font-weight: 700;
                 margin-bottom: 15px;
             }
 
             .tier-price {
                 font-size: 36px;
-                color: var(--text-dark);
+                color: var(--text-dark, #1e293b);
                 font-weight: 700;
                 margin-bottom: 25px;
             }
 
             .tier-price span {
                 font-size: 14px;
-                color: var(--text-gray);
+                color: var(--text-gray, #64748b);
                 font-weight: 400;
             }
 
@@ -154,7 +154,7 @@
 
             .tier-features li {
                 font-size: 15px;
-                color: var(--text-gray);
+                color: var(--text-gray, #64748b);
                 margin-bottom: 12px;
                 display: flex;
                 align-items: center;
@@ -162,20 +162,20 @@
             }
 
             .tier-features li i {
-                color: #2ed573; /* Green checkmark */
+                color: #2ed573;
             }
 
             /* --- Instructions / Bank Details Card --- */
             .instructions-card {
-                background-color: var(--bg-white);
+                background-color: var(--bg-white, #ffffff);
                 border-radius: 16px;
                 padding: 40px;
-                box-shadow: var(--card-shadow);
+                box-shadow: var(--card-shadow, 0 4px 6px rgba(0,0,0,0.05));
                 border: 1px solid rgba(0,0,0,0.03);
             }
 
             .instructions-card h3 {
-                color: var(--primary-blue);
+                color: var(--primary-blue, #0A2F5D);
                 font-size: 22px;
                 margin-bottom: 20px;
             }
@@ -188,27 +188,27 @@
             .instructions-list li {
                 font-size: 15px;
                 line-height: 1.8;
-                color: var(--text-gray);
+                color: var(--text-gray, #64748b);
                 margin-bottom: 10px;
             }
 
             .bank-details {
-                background-color: var(--bg-light);
-                border-left: 4px solid var(--accent-blue);
+                background-color: var(--bg-light, #f8fafc);
+                border-left: 4px solid var(--accent-blue, #3b82f6);
                 padding: 20px;
                 border-radius: 0 8px 8px 0;
                 font-family: monospace;
                 font-size: 14px;
-                color: var(--text-dark);
+                color: var(--text-dark, #1e293b);
                 line-height: 1.6;
             }
 
                     /* --- Registration Modal Styles --- */
             .modal-overlay {
-                display: none; /* Hidden by default */
+                display: none; 
                 position: fixed;
                 top: 0; left: 0; width: 100%; height: 100%;
-                background: rgba(10, 47, 93, 0.8); /* Dark blue transparent background */
+                background: rgba(10, 47, 93, 0.8); 
                 backdrop-filter: blur(4px);
                 z-index: 1000;
                 justify-content: center;
@@ -216,7 +216,7 @@
             }
 
             .modal-content {
-                background: var(--bg-white);
+                background: var(--bg-white, #ffffff);
                 padding: 40px;
                 border-radius: 12px;
                 width: 90%;
@@ -236,17 +236,17 @@
                 top: 20px; right: 25px;
                 font-size: 24px;
                 cursor: pointer;
-                color: var(--text-gray);
+                color: var(--text-gray, #64748b);
                 transition: color 0.3s;
             }
 
             .close-modal:hover { color: red; }
 
             .modal-title {
-                color: var(--primary-blue);
+                color: var(--primary-blue, #0A2F5D);
                 margin-bottom: 25px;
                 font-size: 24px;
-                border-bottom: 2px solid var(--accent-blue);
+                border-bottom: 2px solid var(--accent-blue, #3b82f6);
                 padding-bottom: 10px;
                 display: inline-block;
             }
@@ -255,13 +255,18 @@
                 margin-bottom: 20px;
                 text-align: left;
             }
+            
+            .name-fields-container {
+                display: flex;
+                gap: 10px;
+            }
 
             .form-group label {
                 display: block;
                 margin-bottom: 8px;
                 font-weight: 600;
                 font-size: 14px;
-                color: var(--text-dark);
+                color: var(--text-dark, #1e293b);
             }
 
             .form-group input[type="text"],
@@ -280,7 +285,7 @@
             }
 
             .eligibility-error {
-                color: #dc2626; /* Red error text */
+                color: #dc2626;
                 font-size: 13px;
                 margin-top: 6px;
                 font-weight: 600;
@@ -290,7 +295,7 @@
             .submit-btn {
                 width: 100%;
                 padding: 14px;
-                background-color: var(--primary-blue);
+                background-color: var(--primary-blue, #0A2F5D);
                 color: white;
                 border: none;
                 border-radius: 6px;
@@ -302,26 +307,13 @@
             }
 
             .submit-btn:hover {
-                background-color: var(--accent-blue);
+                background-color: var(--accent-blue, #3b82f6);
             }
 
-            
-        </style>
-    </head>
-<body>
-    <%- include('partials/header') %>
-
-    <div class="page-header">
-        <h1>SNPN Membership</h1>
-        <p>Join a community committed to advancing neuroscience research</p>
-    </div>
-
-        <style>
-            /* Specific styles for the plan buttons and alert box */
             /* Button Base Style */
             .plan-btn {
-                background-color: var(--primary-dark, #0F172A); /* Deep blue background */
-                color: #ffffff; /* White text */
+                background-color: var(--primary-dark, #0F172A);
+                color: #ffffff;
                 border: 2px solid var(--primary-dark, #0F172A);
                 padding: 12px 24px;
                 border-radius: 8px;
@@ -335,31 +327,40 @@
 
             /* Button Hover State */
             .plan-btn:hover {
-                background-color: #ffffff; /* Turns white on hover */
-                color: var(--primary-dark, #0F172A); /* Text turns dark */
+                background-color: #ffffff;
+                color: var(--primary-dark, #0F172A);
             }
 
+            /* Explicit fallback colors prevent invisible buttons on selection */
             .plan-btn.selected {
-                background-color: var(--primary-blue);
-                color: var(--text-white);
-                border-color: var(--primary-blue);
+                background-color: var(--primary-blue, #0A2F5D);
+                color: #ffffff;
+                border-color: var(--primary-blue, #0A2F5D);
             }
 
             .selected-plan-alert {
                 background-color: #e6f7ff;
-                border-left: 4px solid var(--accent-blue);
+                border-left: 4px solid var(--accent-blue, #3b82f6);
                 padding: 15px 20px;
                 margin-bottom: 25px;
                 border-radius: 4px;
                 font-size: 16px;
-                color: var(--primary-blue);
+                color: var(--primary-blue, #0A2F5D);
             }
 
             .selected-plan-alert span {
                 font-weight: 700;
-                color: var(--text-dark);
+                color: var(--text-dark, #1e293b);
             }
         </style>
+    </head>
+<body>
+    <%- include('partials/header') %>
+
+    <div class="page-header">
+        <h1>SNPN Membership</h1>
+        <p>Join a community committed to advancing neuroscience research</p>
+    </div>
 
     <div class="membership-container">
         
@@ -388,7 +389,7 @@
             <div class="tier-card featured">
                 <span class="badge">Recommended</span>
                 <h3 class="tier-name">Lifetime Member</h3>
-                <div class="tier-price">₹5000 <span>/ One-time</span></div>
+                <div class="tier-price">₹10000 <span>/ One-time</span></div>
                 <ul class="tier-features">
                     <li><i class="fa-solid fa-circle-check"></i> Lifetime membership privileges</li>
                     <li><i class="fa-solid fa-circle-check"></i> Voting rights in general body</li>
@@ -422,45 +423,58 @@
                     <li><i class="fa-solid fa-circle-check"></i> Poster presentation eligibility</li>
                     <li><i class="fa-solid fa-circle-check"></i> Discounted stall rates at conferences</li>
                 </ul>
-                <button class="plan-btn" onclick="selectPlan(this, 'Industry Member', '₹5000 (Per Annum)')">Select Plan</button>
+                <button class="plan-btn" onclick="selectPlan(this, 'Industry Member', '₹10000 (Per Annum)')">Select Plan</button>
             </div>
 
         </div>
     </div> 
+
         <div class="modal-overlay" id="registration-modal" style="display: none !important;">
         <div class="modal-content" style="max-height: 90vh; overflow-y: auto;">
             <span class="close-modal" onclick="closeModal()">&times;</span>
             <h3 class="modal-title">Member Registration</h3>
             
             <div id="modal-form-container">
-                <p style="margin-bottom: 20px; font-size: 14px; color: var(--text-gray);">
-                    Creating profile for: <strong id="modal-plan-name" style="color: var(--accent-blue);">Plan</strong>
+                <p style="margin-bottom: 20px; font-size: 14px; color: var(--text-gray, #64748b);">
+                    Creating profile for: <strong id="modal-plan-name" style="color: var(--accent-blue, #3b82f6);">Plan</strong>
                 </p>
 
                 <form id="registration-form">
                     <div class="form-group">
-                        <label>Full Name *</label>
-                        <input type="text" id="user-name" placeholder="Dr. Jane Doe" required>
+                        <label>Name Details *</label>
+                        <div class="name-fields-container">
+                            <select id="prefix" name="prefix" style="flex: 0 0 25%;" required>
+                                <option value="" disabled selected>Title</option>
+                                <option value="Dr.">Dr.</option>
+                                <option value="Prof.">Prof.</option>
+                                <option value="Mr.">Mr.</option>
+                                <option value="Ms.">Ms.</option>
+                                <option value="Mrs.">Mrs.</option>
+                            </select>
+                            <input type="text" id="first_name" name="first_name" placeholder="First Name" style="flex: 1;" required>
+                            <input type="text" id="last_name" name="last_name" placeholder="Last Name" style="flex: 1;" required>
+                        </div>
                     </div>
+                    
                     <div class="form-group">
                         <label>Email Address *</label>
-                        <input type="email" placeholder="jane.doe@university.edu" required>
+                        <input type="email" id="email" name="email" placeholder="jane.doe@university.edu" required>
                     </div>
                     <div class="form-group">
                         <label>Phone Number *</label>
-                        <input type="tel" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+                        <input type="tel" id="phone" name="phone" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
                     </div>
                     <div class="form-group">
                         <label>Complete Address *</label>
-                        <textarea rows="2" placeholder="Residential or Institutional Address" required></textarea>
+                        <textarea id="address" name="address" rows="2" placeholder="Residential or Institutional Address" required></textarea>
                     </div>
                     <div class="form-group">
                         <label>Institutional/Organizational Affiliation *</label>
-                        <input type="text" placeholder="e.g. Pune University" required>
+                        <input type="text" id="affiliation" name="affiliation" placeholder="e.g. Pune University" required>
                     </div>
                     <div class="form-group">
                         <label>Current Post / Designation *</label>
-                        <select id="user-post" required>
+                        <select id="user-post" name="designation" required>
                             <option value="" disabled selected>Select your current role</option>
                             <option value="student">Student (Undergrad/Postgrad)</option>
                             <option value="postdoc">Post-Doctoral Fellow</option>
@@ -473,11 +487,11 @@
                     </div>
                     <div class="form-group">
                         <label>Upload CV (PDF) *</label>
-                        <input type="file" accept=".pdf" required>
+                        <input type="file" id="cv_file" name="cv_file" accept=".pdf" required>
                     </div>
                     <div class="form-group">
                         <label>Upload ID Proof (PDF/JPG/PNG) *</label>
-                        <input type="file" accept=".pdf,.jpg,.jpeg,.png" required>
+                        <input type="file" id="id_file" name="id_file" accept=".pdf,.jpg,.jpeg,.png" required>
                     </div>
                     <button type="submit" class="submit-btn" style="width: 100%; padding: 12px; background-color: var(--primary-blue, #0A2F5D); color: white; border: none; border-radius: 6px; cursor: pointer;">Verify Eligibility & Proceed</button>
                 </form>
@@ -582,9 +596,12 @@
             }
 
             // If eligible, transition the modal from Step 1 to Step 2
-            const userName = document.getElementById('user-name').value;
+            const prefix = document.getElementById('prefix').value;
+            const firstName = document.getElementById('first_name').value;
+            const lastName = document.getElementById('last_name').value;
+            const fullName = `${prefix} ${firstName} ${lastName}`;
             
-            document.getElementById('plan-alert').innerHTML = `Eligibility Verified! Welcome, <strong>${userName}</strong>. Please complete your transaction for the <strong>${currentSelectedPlan}</strong> (${currentSelectedPrice}).`;
+            document.getElementById('plan-alert').innerHTML = `Eligibility Verified! Welcome, <strong>${fullName}</strong>. Please complete your transaction for the <strong>${currentSelectedPlan}</strong> (${currentSelectedPrice}).`;
             
             // Hide form, show payment details
             document.getElementById('modal-form-container').style.display = 'none';
