@@ -29,106 +29,92 @@
             font-weight: 500;
         }
 
-        /* Layout Container - Widened to support 5 columns */
+        /* Layout Container */
         .council-container {
-            max-width: 1450px; 
+            max-width: 1300px; 
             margin: 60px auto;
             padding: 0 4%;
         }
 
-        /* Flexbox Framework for 5 Items Per Row */
+        /* CSS Grid Framework for clean, responsive text cards */
         .council-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 25px; /* Slightly reduced gap to give cards more width */
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px; 
             margin-bottom: 60px;
         }
 
-        /* Uniform Card Component Styling */
+        /* Clean, Text-Only Professional Cards */
         .council-card {
-            /* Calculates width for 5 cards per row minus the 25px gap */
-            width: calc(20% - 20px); 
             background-color: var(--bg-white, #ffffff);
-            border-radius: 16px;
-            padding: 30px 15px; 
-            text-align: center;
-            box-shadow: var(--card-shadow, 0 4px 20px -2px rgba(15, 23, 42, 0.08));
-            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 8px;
+            padding: 30px 25px; 
+            text-align: left;
+            box-shadow: var(--card-shadow, 0 4px 15px rgba(15, 23, 42, 0.04));
+            border: 1px solid rgba(0,0,0,0.06);
+            border-top: 4px solid var(--accent-blue, #2563EB);
             transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
             display: flex;
             flex-direction: column;
-            align-items: center;
         }
         
         .council-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-        }
-
-        /* Avatar Element Layout */
-        .member-avatar-container {
-            position: relative;
-            margin-bottom: 18px;
-        }
-
-        .member-img {
-            width: 110px; /* Scaled down slightly from 130px to fit 5-column proportions */
-            height: 110px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--bg-light, #f8f9fa);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-            transition: border-color 0.3s ease;
-            background-color: #f8f9fa;
-        }
-
-        .council-card:hover .member-img {
-            border-color: var(--accent-blue, #2563EB);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            border-top-color: var(--primary-blue, #0A2F5D);
         }
 
         /* Card Text Structure */
-        .member-name {
-            color: var(--text-dark, #0F172A);
-            font-size: 17px; /* Scaled down slightly to prevent awkward line breaks */
-            font-weight: 700;
-            margin-bottom: 6px;
-            line-height: 1.3;
-        }
-
         .member-role {
             color: var(--accent-blue, #2563EB);
             font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
-            margin-bottom: 10px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .member-name {
+            color: var(--text-dark, #0F172A);
+            font-size: 20px; 
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.2;
         }
 
         .member-affiliation {
             color: var(--text-gray, #475569);
-            font-size: 13px;
-            line-height: 1.5;
+            font-size: 14px;
+            line-height: 1.6;
             font-weight: 500;
+            margin-bottom: 25px;
+            flex-grow: 1; /* Pushes the link to the bottom of the card */
         }
 
-        /* Responsive Scaling */
-        @media (max-width: 1200px) {
-            .council-card {
-                width: calc(33.333% - 17px); /* 3 per row on small laptops */
-            }
+        /* Professional Link Styling */
+        .member-link {
+            display: inline-flex;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary-blue, #0A2F5D);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            margin-top: auto;
         }
 
-        @media (max-width: 850px) {
-            .council-card {
-                width: calc(50% - 13px); /* 2 per row on tablets */
-            }
+        .member-link i {
+            margin-left: 6px;
+            font-size: 12px;
+            transition: transform 0.2s ease;
         }
-        
-        @media (max-width: 600px) {
-            .council-card {
-                width: 100%; /* 1 per row on phones */
-            }
+
+        .member-link:hover {
+            color: var(--accent-blue, #2563EB);
+        }
+
+        .member-link:hover i {
+            transform: translateX(4px);
         }
     </style>
 </head>
@@ -144,134 +130,136 @@
         
         <div class="council-grid">
 
-            <!-- 1. Dr. Amul Sakharkar -->
+            <!-- 1. Founding President -->
             <div class="council-card">
-                <div class="member-avatar-container">
-                    <img src="/images/SNPN EC Members/Amul Sakharkar.jpg" alt="Dr. Amul Sakharkar" class="member-img" onerror="this.src='https://via.placeholder.com/150/f8f9fa/0A2F5D?text=AS'">
-                </div>
-                <h3 class="member-name">Amul Sakharkar</h3>
-                <p class="member-role">Secretary</p>
-                <p class="member-affiliation">Savitribai Phule Pune University, Pune</p>
-            </div>
-
-            <!-- 2. Prof. Aurnab Ghose -->
-            <div class="council-card">
-                <div class="member-avatar-container">
-                    <img src="/images/SNPN EC Members/Aurnab Ghose.jpg" alt="Prof. Aurnab Ghose" class="member-img" onerror="this.src='https://via.placeholder.com/150/f8f9fa/0A2F5D?text=AG'">
-                </div>
-                <h3 class="member-name">Aurnab Ghose</h3>
-                <p class="member-role">Committee Member</p>
-                <p class="member-affiliation">Indian Institute of Science Education and Research (IISER), Pune</p>
-            </div>
-
-            <!-- 3. Prof. C. B. Ganesh -->
-            <div class="council-card">
-                <div class="member-avatar-container">
-                    <img src="/images/SNPN EC Members/C. B. Ganesh.jpg" alt="Prof. C. B. Ganesh" class="member-img" onerror="this.src='https://via.placeholder.com/150/f8f9fa/0A2F5D?text=CG'">
-                </div>
-                <h3 class="member-name">C. B. Ganesh</h3>
-                <p class="member-role">Committee Member</p>
-                <p class="member-affiliation">Karnatak University, Dharwad</p>
-            </div>
-
-            <!-- 4. Prof. Dadasaheb M. Kokare -->
-            <div class="council-card">
-                <div class="member-avatar-container">
-                    <img src="/images/SNPN EC Members/Dadasaheb M. Kokare.jpg" alt="Prof. Dadasaheb M. Kokare" class="member-img" onerror="this.src='https://via.placeholder.com/150/f8f9fa/0A2F5D?text=DK'">
-                </div>
-                <h3 class="member-name">Dadasaheb M. Kokare</h3>
-                <p class="member-role">Committee Member</p>
-                <p class="member-affiliation">RTM Nagpur University, Nagpur</p>
-            </div>
-
-            <!-- 5. Prof. Kavita Babu -->
-            <div class="council-card">
-                <div class="member-avatar-container">
-                    <img src="/images/SNPN EC Members/Kavita Babu.jpg" alt="Prof. Kavita Babu" class="member-img" onerror="this.src='https://via.placeholder.com/150/f8f9fa/0A2F5D?text=KB'">
-                </div>
-                <h3 class="member-name">Kavita Babu</h3>
-                <p class="member-role">Committee Member</p>
-                <p class="member-affiliation">Indian Institute of Science (IISc), Bengaluru</p>
-            </div>
-
-            <!-- 6. Prof. Nishikant Subhedar -->
-            <div class="council-card">
-                <div class="member-avatar-container">
-                    <img src="/images/SNPN EC Members/Nishikant Subhedar.jpg" alt="Prof. Nishikant Subhedar" class="member-img" onerror="this.src='https://via.placeholder.com/150/f8f9fa/0A2F5D?text=NS'">
-                </div>
-                <h3 class="member-name">Nishikant Subhedar</h3>
                 <p class="member-role">Founding President</p>
-                <p class="member-affiliation">Indian Institute of Science Education and Research (IISER), Pune</p>
+                <h3 class="member-name">Nishikant Subhedar</h3>
+                <p class="member-affiliation">Former Prof RTMNU and Former Visiting Faculty IISER Pune</p>
+                <a href="https://scholar.google.com/scholar?q=Nishikant+Subhedar+Pune" target="_blank" rel="noopener noreferrer" class="member-link">
+                    View Profile <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
 
-            <!-- 7. Dr. Praful S. Singru -->
+            <!-- 2. Vice President -->
             <div class="council-card">
-                <div class="member-avatar-container">
-                    <img src="/images/SNPN EC Members/Praful S. Singru.jpg" alt="Dr. Praful S. Singru" class="member-img" onerror="this.src='https://via.placeholder.com/150/f8f9fa/0A2F5D?text=PS'">
-                </div>
-                <h3 class="member-name">Praful S. Singru</h3>
-                <p class="member-role">Joint Secretary</p>
-                <p class="member-affiliation">National Institute of Science Education and Research (NISER), Bhubaneswar</p>
-            </div>
-
-            <!-- 8. Prof. Rajesh Ugale -->
-            <div class="council-card">
-                <div class="member-avatar-container">
-                    <img src="/images/SNPN EC Members/Rajesh Ugale.jpg" alt="Prof. Rajesh Ugale" class="member-img" onerror="this.src='https://via.placeholder.com/150/f8f9fa/0A2F5D?text=RU'">
-                </div>
-                <h3 class="member-name">Rajesh Ugale</h3>
-                <p class="member-role">Committee Member</p>
-                <p class="member-affiliation">RTM Nagpur University, Nagpur</p>
-            </div>
-
-            <!-- 9. Prof. Sheeba Vasu -->
-            <div class="council-card">
-                <div class="member-avatar-container">
-                    <img src="/images/SNPN EC Members/Sheeba Vasu.jpg" alt="Prof. Sheeba Vasu" class="member-img" onerror="this.src='https://via.placeholder.com/150/f8f9fa/0A2F5D?text=SV'">
-                </div>
-                <h3 class="member-name">Sheeba Vasu</h3>
-                <p class="member-role">Committee Member</p>
-                <p class="member-affiliation">Jawaharlal Nehru Centre for Advanced Scientific Research (JNCASR), Bengaluru</p>
-            </div>
-
-            <!-- 10. Prof. Shobha Bhargava -->
-            <div class="council-card">
-                <div class="member-avatar-container">
-                    <img src="/images/SNPN EC Members/Shobha Bhargava.jpg" alt="Prof. Shobha Bhargava" class="member-img" onerror="this.src='https://via.placeholder.com/150/f8f9fa/0A2F5D?text=SB'">
-                </div>
-                <h3 class="member-name">Shobha Bhargava</h3>
-                <p class="member-role">Treasurer</p>
-                <p class="member-affiliation">Savitribai Phule Pune University, Pune</p>
-            </div>
-
-            <!-- 11. Prof. Soumya Iyengar -->
-            <div class="council-card">
-                <div class="member-avatar-container">
-                    <img src="/images/SNPN EC Members/Soumya Iyengar.jpg" alt="Prof. Soumya Iyengar" class="member-img" onerror="this.src='https://via.placeholder.com/150/f8f9fa/0A2F5D?text=SI'">
-                </div>
-                <h3 class="member-name">Soumya Iyengar</h3>
-                <p class="member-role">Committee Member</p>
-                <p class="member-affiliation">National Brain Research Centre (NBRC), New Delhi</p>
-            </div>
-
-            <!-- 12. Prof. Vinod Kumar -->
-            <div class="council-card">
-                <div class="member-avatar-container">
-                    <img src="/images/SNPN EC Members/Vinod Kumar.jpg" alt="Prof. Vinod Kumar" class="member-img" onerror="this.src='https://via.placeholder.com/150/f8f9fa/0A2F5D?text=VK'">
-                </div>
-                <h3 class="member-name">Vinod Kumar</h3>
                 <p class="member-role">Vice-President</p>
+                <h3 class="member-name">Vinod Kumar</h3>
                 <p class="member-affiliation">Prime Minister Professor, India</p>
+                <a href="https://www.researchgate.net/profile/Vinod-Kumar-145" target="_blank" rel="noopener noreferrer" class="member-link">
+                    View Profile <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
 
-            <!-- 13. Prof. Yogesh Bhute -->
+            <!-- 3. Secretary -->
             <div class="council-card">
-                <div class="member-avatar-container">
-                    <img src="/images/SNPN EC Members/Yogesh Bhute.jpg" alt="Prof. Yogesh Bhute" class="member-img" onerror="this.src='https://via.placeholder.com/150/f8f9fa/0A2F5D?text=YB'">
-                </div>
-                <h3 class="member-name">Yogesh Bhute</h3>
+                <p class="member-role">Secretary</p>
+                <h3 class="member-name">Amul Sakharkar</h3>
+                <p class="member-affiliation">Savitribai Phule Pune University, Pune</p>
+                <a href="https://scholar.google.com/scholar?q=Amul+Sakharkar+Pune" target="_blank" rel="noopener noreferrer" class="member-link">
+                    View Profile <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- 4. Joint Secretary -->
+            <div class="council-card">
+                <p class="member-role">Joint Secretary</p>
+                <h3 class="member-name">Praful S. Singru</h3>
+                <p class="member-affiliation">National Institute of Science Education and Research (NISER), Bhubaneswar</p>
+                <a href="https://www.niser.ac.in/profile/pssingru" target="_blank" rel="noopener noreferrer" class="member-link">
+                    Faculty Page <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- 5. Treasurer -->
+            <div class="council-card">
+                <p class="member-role">Treasurer</p>
+                <h3 class="member-name">Shobha Bhargava</h3>
+                <p class="member-affiliation">Savitribai Phule Pune University, Pune</p>
+                <a href="https://scholar.google.com/scholar?q=Shobha+Bhargava+Pune" target="_blank" rel="noopener noreferrer" class="member-link">
+                    View Profile <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- --- COMMITTEE MEMBERS (ALPHABETICAL ORDER) --- -->
+
+            <!-- 6. Aurnab Ghose -->
+            <div class="council-card">
                 <p class="member-role">Committee Member</p>
+                <h3 class="member-name">Aurnab Ghose</h3>
+                <p class="member-affiliation">Indian Institute of Science Education and Research (IISER), Pune</p>
+                <a href="https://www.iiserpune.ac.in/research/department/biology/people/faculty/regular-faculty/aurnab-ghose/265" target="_blank" rel="noopener noreferrer" class="member-link">
+                    Faculty Page <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- 7. C. B. Ganesh -->
+            <div class="council-card">
+                <p class="member-role">Committee Member</p>
+                <h3 class="member-name">C. B. Ganesh</h3>
+                <p class="member-affiliation">Karnatak University, Dharwad</p>
+                <a href="https://vidwan.inflibnet.ac.in/profile/240744" target="_blank" rel="noopener noreferrer" class="member-link">
+                    View Profile <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- 8. Dadasaheb M. Kokare -->
+            <div class="council-card">
+                <p class="member-role">Committee Member</p>
+                <h3 class="member-name">Dadasaheb M. Kokare</h3>
                 <p class="member-affiliation">RTM Nagpur University, Nagpur</p>
+                <a href="https://scholar.google.com/scholar?q=Dadasaheb+M.+Kokare" target="_blank" rel="noopener noreferrer" class="member-link">
+                    View Profile <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- 9. Kavita Babu -->
+            <div class="council-card">
+                <p class="member-role">Committee Member</p>
+                <h3 class="member-name">Kavita Babu</h3>
+                <p class="member-affiliation">Indian Institute of Science (IISc), Bengaluru</p>
+                <a href="https://cns.iisc.ac.in/people/kavita-babu/" target="_blank" rel="noopener noreferrer" class="member-link">
+                    Faculty Page <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- 10. Rajesh Ugale -->
+            <div class="council-card">
+                <p class="member-role">Committee Member</p>
+                <h3 class="member-name">Rajesh Ugale</h3>
+                <p class="member-affiliation">RTM Nagpur University, Nagpur</p>
+                <a href="https://scholar.google.com/citations?user=qrn4bXcAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="member-link">
+                    View Profile <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- 11. Sheeba Vasu -->
+            <div class="council-card">
+                <p class="member-role">Committee Member</p>
+                <h3 class="member-name">Sheeba Vasu</h3>
+                <p class="member-affiliation">Jawaharlal Nehru Centre for Advanced Scientific Research (JNCASR), Bengaluru</p>
+                <a href="https://www.jncasr.ac.in/faculty/sheeba" target="_blank" rel="noopener noreferrer" class="member-link">
+                    Faculty Page <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- 12. Soumya Iyengar -->
+            <div class="council-card">
+                <p class="member-role">Committee Member</p>
+                <h3 class="member-name">Soumya Iyengar</h3>
+                <p class="member-affiliation">National Brain Research Centre (NBRC), New Delhi</p>
+                <a href="https://www.nbrc.ac.in/newweb/research/groups/soumya-iyengar" target="_blank" rel="noopener noreferrer" class="member-link">
+                    Faculty Page <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- 13. Yogesh Bhute -->
+            <div class="council-card">
+                <p class="member-role">Committee Member</p>
+                <h3 class="member-name">Yogesh Bhute</h3>
+                <p class="member-affiliation">RTM Nagpur University, Nagpur</p>
+                <a href="https://www.researchgate.net/profile/Yogesh-Bhute" target="_blank" rel="noopener noreferrer" class="member-link">
+                    View Profile <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
 
         </div>
