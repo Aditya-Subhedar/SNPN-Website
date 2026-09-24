@@ -45,7 +45,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 8%;
+    padding: 2px 8%;
     border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -68,7 +68,7 @@ body {
 .top-nav a {
     text-decoration: none;
     color: var(--text-gray);
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
     margin-right: 20px;
     transition: color 0.2s ease;
@@ -93,7 +93,7 @@ body {
     font-size: 13px;
     color: var(--text-dark);
     outline: none;
-    width: 130px;
+    width: 100px;
 }
 
 .search-container button {
@@ -144,7 +144,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 40px 6% 20px; 
+    padding: 30px 6% 20px; 
 }
 
 .hero-welcome-container {
