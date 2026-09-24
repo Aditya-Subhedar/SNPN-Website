@@ -150,6 +150,7 @@
                 list-style: none;
                 text-align: left;
                 margin-bottom: 35px;
+                flex-grow: 1; /* Fills remaining height in card to push button to bottom */
             }
 
             .tier-features li {
@@ -203,7 +204,7 @@
                 line-height: 1.6;
             }
 
-                    /* --- Registration Modal Styles --- */
+            /* --- Registration Modal Styles --- */
             .modal-overlay {
                 display: none; 
                 position: fixed;
@@ -321,7 +322,7 @@
                 font-weight: 600;
                 cursor: pointer;
                 width: 100%;
-                margin-top: 20px; 
+                margin-top: auto; /* Aligns all buttons at the bottom edge */
                 transition: all 0.3s ease;
             }
 
@@ -331,7 +332,6 @@
                 color: var(--primary-dark, #0F172A);
             }
 
-            /* Explicit fallback colors prevent invisible buttons on selection */
             .plan-btn.selected {
                 background-color: var(--primary-blue, #0A2F5D);
                 color: #ffffff;
@@ -397,7 +397,7 @@
                     <li><i class="fa-solid fa-circle-check"></i> Priority entry & maximum discounts</li>
                     <li><i class="fa-solid fa-circle-check"></i> Applicable for Scientists, Faculty, and Academicians</li>
                 </ul>
-                <button class="plan-btn" onclick="selectPlan(this, 'Lifetime Member', '₹5000 (One-time)')">Select Plan</button>
+                <button class="plan-btn" onclick="selectPlan(this, 'Lifetime Member', '₹10000 (One-time)')">Select Plan</button>
             </div>
             
             <div class="tier-card">
@@ -542,7 +542,7 @@
             currentSelectedPlan = planName;
             currentSelectedPrice = planPrice;
 
-            // Reset modal to Step 1 (Form) just in case they closed it on Step 2 previously
+            // Reset modal to Step 1 (Form)
             document.getElementById('modal-form-container').style.display = 'block';
             document.getElementById('modal-payment-container').style.display = 'none';
             document.getElementById('registration-form').reset();
