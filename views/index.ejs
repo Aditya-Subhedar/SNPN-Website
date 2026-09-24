@@ -7,49 +7,73 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* --- Slideshow Interactive Enhancements --- */
-        
-        /* Ensure the frame acts as the absolute baseline for the arrow buttons */
-        .slideshow-frame {
-            position: relative;
-            overflow: hidden;
+       /* --- Nearest Event Banner Styles --- */
+        .nearest-event-banner {
+            margin-top: 20px;
+            margin-bottom: 40px;
+            background: var(--bg-light, #f8fafc);
+            border-left: 4px solid var(--accent-brand, #2563EB);
+            padding: 24px;
+            border-radius: 0 8px 8px 0; /* Keeps the border side flat, rounds the right side */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            width: 100%; /* Forces exact alignment with the text above it */
+            box-sizing: border-box; /* Prevents padding from breaking the width */
         }
 
-        /* Base Arrow Style */
-        .slide-nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(10, 47, 93, 0.6); /* Translucent theme dark blue */
-            color: #ffffff;
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
+        .event-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--accent-brand, #2563EB);
+            margin-bottom: 8px;
+            letter-spacing: 0.8px;
+        }
+
+        .nearest-event-title {
+            font-size: 17px;
+            color: var(--primary-dark, #0A2F5D);
+            margin: 0 0 8px 0;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .nearest-event-date {
+            font-size: 14px;
+            color: var(--text-gray, #475569);
+            margin: 0 0 15px 0; /* Added bottom margin to separate from the new button */
             display: flex;
-            justify-content: center;
             align-items: center;
-            font-size: 16px;
-            z-index: 20;
-            opacity: 0; /* Hidden by default */
-            transition: all 0.3s ease;
         }
 
-        /* Position anchors */
-        .prev-slide { left: 15px; }
-        .next-slide { right: 15px; }
-
-        /* Reveal navigation arrows cleanly on hover */
-        .slideshow-frame:hover .slide-nav-btn {
-            opacity: 1;
+        .nearest-event-date i {
+            margin-right: 8px;
+            color: var(--accent-brand, #2563EB);
         }
 
-        /* Hover states for the buttons themselves */
-        .slide-nav-btn:hover {
-            background: rgba(10, 47, 93, 0.95);
-            color: #5bc0de; /* Matches your accent light blue tint */
-            transform: translateY(-50%) scale(1.1);
+        /* New secondary button for the banner */
+        .event-banner-btn {
+            display: inline-flex;
+            align-items: center;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent-brand, #2563EB);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .event-banner-btn i {
+            margin-left: 6px;
+            font-size: 12px;
+            transition: transform 0.2s ease;
+        }
+
+        .event-banner-btn:hover {
+            color: var(--primary-dark, #0A2F5D);
+        }
+
+        .event-banner-btn:hover i {
+            transform: translateX(4px);
         }
     </style>
 </head>
@@ -60,91 +84,28 @@
         
         <div class="hero-content hero-left">
             <div class="hero-welcome-container">
-                <div class="slideshow-frame">
-                    <img src="/images/Slideshow/ss1.png" class="slide active">
-                    <img src="/images/Slideshow/ss2.png" class="slide">
-                    <img src="/images/Slideshow/ss3.png" class="slide">
-                    <img src="/images/Slideshow/ss4.png" class="slide">
-                    <img src="/images/Slideshow/ss5.png" class="slide">
-                    <img src="/images/Slideshow/ss6.png" class="slide">
-                    <img src="/images/Slideshow/ss7.png" class="slide">
-                    <img src="/images/Slideshow/ss8.png" class="slide">
-                    <img src="/images/Slideshow/ss9.png" class="slide">
-                    <img src="/images/Slideshow/ss10.png" class="slide">
+                
 
-                    <button class="slide-nav-btn prev-slide" aria-label="Previous Slide">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="slide-nav-btn next-slide" aria-label="Next Slide">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-
+                <!-- Dynamic Nearest Event Banner -->
+                <% if (events && events.length > 0) { %>
+                    <div class="nearest-event-banner">
+                        <span class="event-badge">Next Upcoming Event</span>
+                        <h3 class="nearest-event-title"><%= events[0].title %></h3>
+                        <p class="nearest-event-date"><i class="fas fa-calendar-alt"></i> <%= events[0].date %></p>
+                        
+                        <!-- New Link to Events Page -->
+                        <a href="/events" class="event-banner-btn">
+                            View All Events <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                <% } %>
                 <h1 class="hero-title">Welcome</h1>
                 <p class="hero-description">
-                    The Society of Neuropeptides and Neuroendocrinology (SNPN) welcomes you to explore 
-                    contemporary research and foster connections in this vital scientific field. 
-                    We aim to advance research in India through collaboration and excellence.
+                    Welcome to the Society for Neuropeptides and Neuroendocrinology (SNPN). We bring together scientists across India to drive cutting-edge research, share knowledge, and foster collaborations that advance the field of neuroendocrinology.
                 </p>
                 <a href="/about" class="hero-button">Read more about SNPN</a>
             </div>
         </div>
-
-        <script>
-            let currentSlide = 0;
-            const slides = document.querySelectorAll('.slide');
-            const slideshowFrame = document.querySelector('.slideshow-frame');
-            const prevButton = document.querySelector('.prev-slide');
-            const nextButton = document.querySelector('.next-slide');
-            let rotationTimer;
-
-            // Master display shifting engine
-            function changeSlide(targetIndex) {
-                // Strip visibility from current index
-                slides[currentSlide].classList.remove('active');
-                
-                currentSlide = targetIndex;
-
-                // Infinite loop validation bounds checks
-                if (currentSlide >= slides.length) {
-                    currentSlide = 0;
-                } else if (currentSlide < 0) {
-                    currentSlide = slides.length - 1;
-                }
-
-                // Add active class visibility to new item
-                slides[currentSlide].classList.add('active');
-            }
-
-            // Automatic loop engine controllers
-            function startIntervalLoop() {
-                rotationTimer = setInterval(() => {
-                    changeSlide(currentSlide + 1);
-                }, 4000);
-            }
-
-            function stopIntervalLoop() {
-                clearInterval(rotationTimer);
-            }
-
-            // Initialize on window loading sequence
-            startIntervalLoop();
-
-            /* --- Hover Event Listeners --- */
-            slideshowFrame.addEventListener('mouseenter', stopIntervalLoop);
-            slideshowFrame.addEventListener('mouseleave', startIntervalLoop);
-
-            /* --- Click Event Listeners --- */
-            nextButton.addEventListener('click', (event) => {
-                event.stopPropagation(); // Prevents frame selection side-effects
-                changeSlide(currentSlide + 1);
-            });
-
-            prevButton.addEventListener('click', (event) => {
-                event.stopPropagation();
-                changeSlide(currentSlide - 1);
-            });
-        </script>
 
         <div class="hero-content hero-right">
             <div class="map-container">
