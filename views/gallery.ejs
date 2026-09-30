@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery | SNPN</title>
     <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cloudflare.com">
     
     <style>
         /* --- Gallery Specific Styles --- */
         
-        /* Hero Banner (Matches Newsletter & Theme) */
+        /* Hero Banner (Matches Theme) */
         .gallery-hero {
             background: linear-gradient(135deg, var(--primary-blue, #0A2F5D) 0%, #061e3e 100%);
             color: #ffffff;
@@ -37,7 +37,7 @@
         .gallery-section {
             padding: 60px 8% 80px;
             background-color: var(--bg-light, #f8fafc);
-            min-height: 60vh;
+            min-height: 50vh;
         }
 
         .gallery-filters {
@@ -46,6 +46,8 @@
             flex-wrap: wrap;
             gap: 15px;
             margin-bottom: 40px;
+            opacity: 0.6;
+            pointer-events: none; /* Disables clicking filters while empty */
         }
 
         .filter-btn {
@@ -56,78 +58,44 @@
             border-radius: 20px;
             font-weight: 600;
             font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            cursor: default;
         }
 
-        .filter-btn:hover, .filter-btn.active {
+        .filter-btn.active {
             background: var(--primary-blue, #0A2F5D);
             color: #ffffff;
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            max-width: 1200px;
+        /* Clean "Coming Soon" Box Styles */
+        .gallery-soon-box {
+            max-width: 650px;
             margin: 0 auto;
-        }
-
-        /* Individual Image Cards */
-        .gallery-item {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             background: #ffffff;
-            cursor: pointer;
-            /* Ensures smooth rendering during the scale animation */
-            transform: translateZ(0); 
+            border-radius: 12px;
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border: 1px solid #e2e8f0;
         }
 
-        .gallery-item img {
-            width: 100%;
-            height: 260px;
-            object-fit: cover; /* Keeps aspect ratio clean without stretching */
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        /* Hover Zoom Effect */
-        .gallery-item:hover img {
-            transform: scale(1.08);
-        }
-
-        /* Slide-up Caption Overlay */
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(10, 47, 93, 0.9); /* Dark blue with slight transparency */
-            backdrop-filter: blur(4px);
-            color: #ffffff;
-            padding: 20px;
-            transform: translateY(100%);
-            transition: transform 0.4s ease;
-        }
-
-        .gallery-item:hover .gallery-caption {
-            transform: translateY(0);
-        }
-
-        .gallery-caption h4 {
-            margin: 0 0 5px 0;
-            font-size: 16px;
-            font-weight: 700;
+        .gallery-soon-box i {
+            font-size: 52px;
             color: var(--accent-blue, #5bc0de);
+            margin-bottom: 22px;
         }
 
-        .gallery-caption p {
+        .gallery-soon-box h4 {
+            font-size: 24px;
+            color: var(--primary-blue, #0A2F5D);
+            margin: 0 0 12px 0;
+            font-weight: 700;
+        }
+
+        .gallery-soon-box p {
+            color: var(--text-gray, #64748b);
+            font-size: 15px;
+            line-height: 1.65;
             margin: 0;
-            font-size: 13px;
-            color: #e2e8f0;
-            line-height: 1.4;
         }
     </style>
 </head>
@@ -142,6 +110,7 @@
 
     <section class="gallery-section">
         
+        <!-- Filters styled but safely grayed out and locked -->
         <div class="gallery-filters">
             <button class="filter-btn active">All Events</button>
             <button class="filter-btn">Annual Conferences</button>
@@ -149,57 +118,13 @@
             <button class="filter-btn">Awards</button>
         </div>
 
-        <div class="gallery-grid">
-            
-            <div class="gallery-item">
-                <img src="https://placehold.co/600x400/e2e8f0/0A2F5D?text=Annual+Meeting+2025" alt="Annual Meeting 2025">
-                <div class="gallery-caption">
-                    <h4>National Conference 2025</h4>
-                    <p>Keynote speakers addressing the general body regarding neuropeptide advancements.</p>
-                </div>
-            </div>
-
-            <div class="gallery-item">
-                <img src="https://placehold.co/600x400/e2e8f0/0A2F5D?text=Poster+Presentation" alt="Poster Presentation">
-                <div class="gallery-caption">
-                    <h4>Student Poster Presentations</h4>
-                    <p>Early career researchers showcasing their latest lab findings.</p>
-                </div>
-            </div>
-
-            <div class="gallery-item">
-                <img src="https://placehold.co/600x400/e2e8f0/0A2F5D?text=Executive+Council" alt="Executive Council">
-                <div class="gallery-caption">
-                    <h4>Executive Council Meeting</h4>
-                    <p>Planning committee finalizing the grants and awards for the upcoming academic year.</p>
-                </div>
-            </div>
-
-            <div class="gallery-item">
-                <img src="https://placehold.co/600x400/e2e8f0/0A2F5D?text=Lab+Workshop" alt="Lab Workshop">
-                <div class="gallery-caption">
-                    <h4>Advanced Techniques Workshop</h4>
-                    <p>Hands-on training session for industry professionals and post-docs.</p>
-                </div>
-            </div>
-
-            <div class="gallery-item">
-                <img src="https://placehold.co/600x400/e2e8f0/0A2F5D?text=Award+Ceremony" alt="Award Ceremony">
-                <div class="gallery-caption">
-                    <h4>Excellence in Research Awards</h4>
-                    <p>Honoring the lifetime achievements of our founding members.</p>
-                </div>
-            </div>
-
-            <div class="gallery-item">
-                <img src="https://placehold.co/600x400/e2e8f0/0A2F5D?text=Networking+Dinner" alt="Networking Dinner">
-                <div class="gallery-caption">
-                    <h4>Gala & Networking Dinner</h4>
-                    <p>Fostering connections between academia and industry leaders.</p>
-                </div>
-            </div>
-
+        <!-- Clean professional announcement card instead of blank placeholders -->
+        <div class="gallery-soon-box">
+            <i class="fa-solid fa-images"></i>
+            <h4>Media Gallery Launching Soon</h4>
+            <p>Our official media catalog is currently being curated. High-resolution photographs, presentation snapshots, and award ceremony highlights from the upcoming 1st Annual Conference will be hosted here immediately following the event conclusion.</p>
         </div>
+        
     </section>
 
     <%- include('partials/footer') %>
