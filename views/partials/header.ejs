@@ -1,102 +1,243 @@
 <header class="main-header">
-    <div class="top-header">
-        <div class="header-left">
-            <!-- Wrapped the image in an anchor tag -->
-            <a href="/">
+    <!-- Top Tier: Branding & Search -->
+    <div class="header-top-tier">
+        <div class="tier-inner">
+            <a href="/" class="logo-wrapper">
+                <!-- Relying completely on your image since the text is already baked into it -->
                 <img src="/images/logo.png" alt="SNPN Logo" class="site-logo">
             </a>
+            
+            <!-- Sleek, Aligned Search Component -->
+            <div class="search-block">
+                <div class="search-box-wrapper">
+                    <input type="text" id="site-search-input" placeholder="Search resources..." autocomplete="off">
+                    <button id="site-search-btn" aria-label="Submit Search"><i class="fas fa-search"></i></button>
+                    <div id="search-dropdown" class="search-dropdown-menu" style="display: none;"></div>
+                </div>
+            </div>
         </div>
-        <div class="header-right">
-            <nav class="top-nav">
-                <a href="/">Home</a>
-                <a href="/about">About</a>
-                <a href="/membership#pricing-cards">Get Involved</a> 
-                <a href="/membership">Resources</a>
+    </div>
+
+    <!-- Bottom Tier: Clean Menu Layout -->
+    <div class="header-bottom-tier">
+        <div class="tier-inner">
+            <nav class="main-nav-menu">
+                <a href="/" class="nav-item">Home</a>
+                <a href="/about" class="nav-item">About</a>
+                <a href="/membership" class="nav-item">Membership</a>
+                <a href="/events" class="nav-item">Events</a>
+                <a href="/newsletter" class="nav-item">Newsletter</a>
+                <a href="/awards" class="nav-item">Awards</a>
+                <a href="/gallery" class="nav-item">Gallery</a>
+                <a href="#contact-footer" class="nav-item contact-cta">Contact Us</a>
             </nav>
-            <div class="search-container" style="position: relative;">
-    <input type="text" id="site-search-input" placeholder="Search" autocomplete="off">
-    <button id="site-search-btn" aria-label="Search"><i class="fas fa-search"></i></button>
-    
-    <div id="search-dropdown" class="search-dropdown-menu" style="display: none;"></div>
-</div>
+        </div>
+    </div>
+</header>
 
 <style>
-    /* Dropdown Styling */
+    /* ==========================================================================
+       PREMIUM TWIN-TIER ACADEMIC HEADER ARCHITECTURE
+       ========================================================================== */
+    :root {
+        --primary-blue: #0A2F5D;
+        --accent-blue: #5bc0de;
+        --text-slate: #334155;
+        --border-light: #f1f5f9;
+    }
+
+    .main-header {
+        background: #ffffff;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        width: 100%;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        box-shadow: 0 4px 20px rgba(10, 47, 93, 0.05);
+    }
+
+    .tier-inner {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 0 4%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+    }
+
+    /* Top branding area styling rules */
+    .header-top-tier {
+        background: #ffffff;
+        height: 90px; /* Slight height increase to breathe around the wide logo */
+        border-bottom: 1px solid #f1f5f9;
+    }
+
+    .logo-wrapper {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+
+    /* Adjusted to handle the full wide image aspect ratio correctly */
+    .site-logo {
+        height: 64px;
+        width: auto;
+        display: block;
+        object-fit: contain;
+    }
+
+    /* Navigation Layout Rules */
+    .header-bottom-tier {
+        background: #f8fafc;
+        height: 50px;
+        border-bottom: 3px solid var(--primary-blue);
+    }
+
+    .main-nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        width: 100%;
+    }
+
+    .nav-item {
+        padding: 0 16px;
+        height: 50px;
+        display: inline-flex;
+        align-items: center;
+        color: var(--text-slate);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14.5px;
+        transition: all 0.2s ease;
+    }
+
+    .nav-item:hover {
+        color: var(--primary-blue);
+        background-color: #f1f5f9;
+    }
+
+    /* Elegant indicator box showing current position state */
+    .nav-item.active-page {
+        color: var(--primary-blue);
+        background-color: #ffffff;
+        box-shadow: inset 0 -3px 0 var(--primary-blue);
+    }
+
+    /* Distinct Action Callout Item */
+    .nav-item.contact-cta {
+        margin-left: auto; /* Pushes contact link to the far right wall layout */
+        background-color: var(--primary-blue);
+        color: #ffffff !important;
+        font-weight: 700;
+    }
+
+    .nav-item.contact-cta:hover {
+        background-color: #0c366b;
+    }
+
+    /* Refined Minimalist Search bar styles */
+    .search-box-wrapper {
+        position: relative;
+    }
+
+    #site-search-input {
+        width: 220px;
+        padding: 10px 40px 10px 16px;
+        font-size: 14px;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        background-color: #f8fafc;
+        transition: all 0.2s ease;
+    }
+
+    #site-search-input:focus {
+        outline: none;
+        width: 280px;
+        border-color: var(--primary-blue);
+        background-color: #ffffff;
+        box-shadow: 0 0 0 3px rgba(10, 47, 93, 0.08);
+    }
+
+    #site-search-btn {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+        color: #64748b;
+        cursor: pointer;
+    }
+
     .search-dropdown-menu {
         position: absolute;
         top: 100%;
-        left: 0;
         right: 0;
+        width: 320px;
         background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 4px;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        max-height: 250px;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        max-height: 300px;
         overflow-y: auto;
-        z-index: 1000;
+        z-index: 1100;
         margin-top: 8px;
     }
+
     .search-result-item {
         display: block;
-        padding: 12px 15px;
-        color: var(--primary-blue, #0A2F5D);
+        padding: 12px 16px;
+        color: var(--text-slate);
         text-decoration: none;
         border-bottom: 1px solid #f1f5f9;
         text-align: left;
         font-size: 14px;
-        transition: background 0.2s ease;
     }
+
     .search-result-item:hover {
-        background: #f0f8ff; /* Light blue hover tint */
-        color: #0369a1;
+        background: #f0f8ff;
+        color: var(--primary-blue);
     }
-    .search-result-item:last-child {
-        border-bottom: none;
-    }
-    .no-results {
-        padding: 12px 15px;
-        color: #64748b;
-        font-size: 14px;
-        text-align: left;
-        font-style: italic;
+
+    @media (max-width: 900px) {
+        .header-top-tier, .header-bottom-tier { height: auto; padding: 10px 0; }
+        .tier-inner { flex-direction: column; gap: 12px; text-align: center; }
+        .main-nav-menu { flex-wrap: wrap; justify-content: center; }
+        .nav-item { height: 40px; }
+        .nav-item.contact-cta { margin-left: 0; }
     }
 </style>
-        </div>
-    </div>
-    
-    <div class="bottom-header">
-        <nav class="main-nav">
-            <a href="/newsletter">Newsletter</a>
-            <a href="/awards">Awards</a>
-            <a href="/events">Events</a>
-            <a href="/gallery">Gallery</a>
-            <a href="#contact-footer">CONTACT</a>
-        </nav>
-    </div>
-</header>
+
+
+<script>
+    // System script component to automatically check and apply high-contrast active line highlights matching route locations
+    document.addEventListener('DOMContentLoaded', () => {
+        const currentRoutePath = window.location.pathname;
+        const navigationLinks = document.querySelectorAll('.nav-item');
+
+        navigationLinks.forEach(link => {
+            const anchorHref = link.getAttribute('href');
+            if (currentRoutePath === anchorHref || (anchorHref === '/' && currentRoutePath === '')) {
+                link.classList.add('active-page');
+            }
+        });
+    });
+</script>
+
+<!-- The sophisticated scroll intercept script from your code sent remains operational underneath -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // 1. Find all anchor links inside your navbar/header
-        // (This targets links inside header elements; adjust selector if you use a specific class like '.nav-links a')
-        const currentNavbarLinks = document.querySelectorAll('header a, nav a, .navbar a');
-
+        const currentNavbarLinks = document.querySelectorAll('.nav-item');
         currentNavbarLinks.forEach(link => {
             link.addEventListener('click', (event) => {
                 const linkHref = link.getAttribute('href');
                 const currentPath = window.location.pathname;
-
-                // 2. Check if the clicked link matches the page the user is currently looking at
                 if (linkHref === currentPath || (linkHref === '/' && currentPath === '')) {
-                    
-                    // 3. Only intercept if the user has actually scrolled down
-                    if (window.scrollY > 0) {
-                        event.preventDefault(); // Stop the browser from doing an abrupt full-page reload
-                        
-                        // 4. Perform the sophisticated smooth scroll up
-                        window.scrollTo({
-                            top: 0,
-                            behavior: 'smooth'
-                        });
+                    if (window.scrollY > 0 && !linkHref.startsWith('#')) {
+                        event.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
                     }
                 }
             });
@@ -108,40 +249,38 @@
     document.addEventListener('DOMContentLoaded', () => {
         const searchInput = document.getElementById('site-search-input');
         const searchDropdown = document.getElementById('search-dropdown');
+        let currentFocusIndex = -1;
 
-        // 1. The "Cheat Sheet" Index
-        // Add pages, their URLs, and forgiving keywords a user might type
+        // Centralized Search Registry
         const searchIndex = [
-            { title: 'Home', url: '/', keywords: ['welcome', 'start', 'india', 'main'] },
+            { title: 'Home', url: '/', keywords: ['welcome', 'start', 'india', 'main', 'snpn'] },
             { title: 'About SNPN', url: '/about', keywords: ['history', 'mission', 'vision', 'who we are', 'society'] },
-            { title: 'Membership', url: '/membership', keywords: ['join', 'register', 'fees', 'student', 'faculty', 'industry', 'benefits', 'apply'] },
-            { title: 'Upcoming Events', url: '/events', keywords: ['calendar', 'conferences', 'seminars', 'workshops', 'dates', 'meetings'] },
+            { title: 'Membership & Registration', url: '/membership', keywords: ['join', 'register', 'fees', 'student', 'faculty', 'industry', 'benefits', 'apply'] },
+            { title: 'Upcoming Events', url: '/events', keywords: ['calendar', 'conferences', 'seminars', 'workshops', 'dates', 'meetings', 'annual'] },
             { title: 'Executive Council', url: '/council', keywords: ['leadership', 'board', 'members', 'president', 'directors', 'team', 'committee'] },
-            { title: 'Awards & Grants', url: '/awards', keywords: ['recognition', 'prizes', 'funding', 'achievements'] },
-            { title: 'SNPN Newsletter', url: '/newsletter', keywords: ['updates', 'news', 'articles', 'publications', 'read', 'journal'] },
-            { title: 'Photo Gallery', url: '/gallery', keywords: ['photos', 'pictures', 'images', 'past events', 'memories'] },
+            { title: 'Awards & Grants', url: '/awards', keywords: ['recognition', 'prizes', 'funding', 'achievements', 'fellowship'] },
+            { title: 'SNPN Newsletter', url: '/newsletter', keywords: ['updates', 'news', 'articles', 'publications', 'read', 'journal', 'volume'] },
+            { title: 'Media Gallery', url: '/gallery', keywords: ['photos', 'pictures', 'images', 'past events', 'memories', 'snapshots'] },
             { title: 'Contact Us', url: '#contact-footer', keywords: ['email', 'phone', 'address', 'reach out', 'help', 'support'] }
         ];
 
-        // 2. Listen to the user typing
-        searchInput.addEventListener('input', (event) => {
-            const query = event.target.value.toLowerCase().trim();
+        // Core Query Matching Engine
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.toLowerCase().trim();
+            currentFocusIndex = -1;
             
-            // If they clear the box, hide the dropdown
             if (query.length === 0) {
                 searchDropdown.style.display = 'none';
                 searchDropdown.innerHTML = '';
                 return;
             }
 
-            // 3. Filter the cheat sheet for matches
             const matches = searchIndex.filter(page => {
                 const titleMatch = page.title.toLowerCase().includes(query);
                 const keywordMatch = page.keywords.some(keyword => keyword.includes(query));
                 return titleMatch || keywordMatch;
             });
 
-            // 4. Build the HTML for the dropdown
             searchDropdown.innerHTML = '';
             
             if (matches.length > 0) {
@@ -151,24 +290,60 @@
                     link.className = 'search-result-item';
                     link.innerHTML = `<strong>${match.title}</strong>`;
                     
-                    // Close the dropdown cleanly if they click a result
                     link.addEventListener('click', () => {
                         searchDropdown.style.display = 'none';
-                        searchInput.value = ''; // Optional: clears the bar after click
+                        searchInput.value = '';
                     });
                     
                     searchDropdown.appendChild(link);
                 });
             } else {
-                // Friendly empty state for typos
                 searchDropdown.innerHTML = '<div class="no-results">No exact matches found. Try a simpler word.</div>';
             }
             
-            // Reveal the box
             searchDropdown.style.display = 'block';
         });
 
-        // 5. UX Guard: Hide dropdown if the user clicks anywhere else on the page
+        // Advanced Accessibility & Keyboard Navigation Handler (Arrow Keys + Enter)
+        searchInput.addEventListener('keydown', (e) => {
+            const items = searchDropdown.getElementsByClassName('search-result-item');
+            if (items.length === 0) return;
+
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                currentFocusIndex = (currentFocusIndex + 1) % items.length;
+                setActiveItem(items);
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                currentFocusIndex = (currentFocusIndex - 1 + items.length) % items.length;
+                setActiveItem(items);
+            } else if (e.key === 'Enter') {
+                e.preventDefault();
+                if (currentFocusIndex > -1 && items[currentFocusIndex]) {
+                    items[currentFocusIndex].click();
+                } else if (items[0]) {
+                    // Fallback: If user hits Enter without selection, go to the first matched item
+                    items[0].click();
+                }
+            } else if (e.key === 'Escape') {
+                searchDropdown.style.display = 'none';
+            }
+        });
+
+        function setActiveItem(items) {
+            for (let i = 0; i < items.length; i++) {
+                items[i].style.background = '';
+                items[i].style.color = '';
+            }
+            if (currentFocusIndex > -1 && items[currentFocusIndex]) {
+                items[currentFocusIndex].style.background = '#f0f8ff';
+                items[currentFocusIndex].style.color = '#0369a1';
+                // Automatically scroll within small viewport dropdown arrays
+                items[currentFocusIndex].scrollIntoView({ block: 'nearest' });
+            }
+        }
+
+        // Global Window Click Guard
         document.addEventListener('click', (event) => {
             if (!searchInput.contains(event.target) && !searchDropdown.contains(event.target)) {
                 searchDropdown.style.display = 'none';
