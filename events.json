@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "type": "snpn",
+    "status": "upcoming",
+    "day": "18",
+    "month": "Nov",
+    "year": "2026",
+    "title": "1st Annual Conference of Society for Neuropeptides and Neuroendocrinology",
+    "time": "09:00 AM - 05:00 PM",
+    "location": "Auditorium, IISER Pune, India",
+    "metaInfo": "Dr. Aurnab Ghoshe & Dr. Amul Sakharkar (Keynote)",
+    "description": "The flagship annual gathering bringing together clinical practitioners and basic laboratory scientists across India to evaluate modern neuropeptide dynamics.",
+    "modalMessage": "Registration for the flagship Annual Conference will open officially alongside abstract acceptance feedback. Ensure your SNPN membership is active to lock down discounted delegate entry paths."
+  },
+  {
+    "id": 2,
+    "type": "partner",
+    "status": "upcoming",
+    "day": "05",
+    "month": "Oct",
+    "year": "2026",
+    "title": "K.S. Krishnan Memorial Lecture in Neuroscience",
+    "time": "04:00 PM IST onwards",
+    "location": "Room 103, LHC, IISER Pune",
+    "metaInfo": "Neuroscience Interest Group (NIG)",
+    "description": "Featuring Prof. Marianne Bronner from Caltech exploring 'Neural Crest Contributions to Head, Heart and Gut', mapping developmental mechanics in vertebrate lineages.",
+    "modalMessage": "Organized by the Neuroscience Interest Group at IISER Pune. The lecture is open to all students, scholars, and faculty members without prior registration."
+  },
+  {
+    "id": 3,
+    "type": "partner",
+    "status": "upcoming",
+    "day": "06",
+    "month": "Oct",
+    "year": "2026",
+    "title": "XLIV Annual Meeting of Indian Academy of Neurosciences",
+    "time": "Oct 06 - Oct 09, 2026",
+    "location": "BRIC-NBRC, Manesar-Gurgaon",
+    "metaInfo": "National Flagship Conference",
+    "description": "Centering on 'Advances in Neuroscience in Health and Disease', bringing researchers and clinicians together to shape investigative frameworks.",
+    "modalMessage": "Hosted at the BRIC-National Brain Research Centre (NBRC), Manesar. Includes keynotes, poster panels, and technical abstract sessions for registered delegates."
+  },
+  {
+    "id": 4,
+    "type": "partner",
+    "status": "past",
+    "day": "30",
+    "month": "Jun",
+    "year": "2026",
+    "title": "7th Bangalore Cognition Workshop & Public Lecture",
+    "time": "Concluded (04:00 PM)",
+    "location": "Faculty Hall, IISc Bangalore",
+    "metaInfo": "Cognitive Research Track",
+    "description": "Hosted by the Centre for Neuroscience (CNS) at IISc, featuring Dr. Nicholas Betley from UPenn exploring deep structural brain-behavior circuit mapping.",
+    "modalMessage": "Session summaries and cognitive systems references can be verified directly via the official Centre for Neuroscience (CNS) documentation channels."
+  }
+]
