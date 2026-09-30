@@ -2,14 +2,13 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-// Setup EJS and Static Files
+// Setup HTML View Engine and Static Resource Asset Folders
 app.set('view engine', 'ejs');
-// Express needs to serve all static images from public/images
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true })); 
 
-// --- MOCK DATABASE ---
-// (I kept this here just in case your index.ejs relies on this data to load the homepage)
+// --- STATIC STATIC DATA MOCK ---
 let upcomingEvents = [
     { 
         id: 2, 
@@ -18,9 +17,8 @@ let upcomingEvents = [
     }
 ];
 
-// --- PUBLIC ROUTES ---
+// --- APP PAGE ROUTING ---
 app.get('/', (req, res) => {
-    // Crucial: pass the events data to the homepage
     res.render('index', { events: upcomingEvents });
 });
 
@@ -32,15 +30,9 @@ app.get('/workshops', (req, res) => res.render('workshops'));
 app.get('/newsletter', (req, res) => res.render('newsletter'));
 app.get('/awards', (req, res) => res.render('awards'));
 app.get('/events', (req, res) => res.render('events'));
-app.get('/contact', (req, res) => res.render('contact'));
-app.get('/history', (req, res) => res.render('history'));
 
-// ---> YOUR NEWLY ADDED EVENTS ROUTE <---
-app.get('/events', (req, res) => res.render('events'));
-
-
-// Start Server
-const PORT = 3000;
+// Boot App Listen Port
+const PORT = 4500;
 app.listen(PORT, () => {
-    console.log(`Server is running! Open http://localhost:${PORT} in your browser.`);
+    console.log(`Server running successfully at http://localhost:${PORT}`);
 });
